@@ -1,6 +1,7 @@
 <?php
 
 // @formatter:off
+// phpcs:ignoreFile
 /**
  * A helper file for your Eloquent Models
  * Copy the phpDocs from this file to the correct Model,
@@ -12,243 +13,285 @@
 
 namespace App\Models{
 /**
- * App\Models\AdditionalAttribute
+ * App\Models\Page
  *
  * @property int $id
- * @property bool $primo_finishing
- * @property bool $3d_finishing
- * @property bool $iridium_finishing
- * @property bool $cpl_laminate
- * @property bool $hpl_laminate
- * @property bool $lacquered
- * @property bool $room_door
- * @property bool $bathroom_door
- * @property bool $interior_entrance_door
- * @property bool $technical_doors
- * @property bool $fire_door
- * @property bool $anti_burglary_door
- * @property bool $soundproof_door
- * @property bool $sliding_door
- * @property bool $modern
- * @property int $classic
- * @property bool $loft
- * @property bool $retro
- * @property bool $rustic
- * @property bool $width_60
- * @property bool $width_70
- * @property bool $width_80
- * @property bool $width_90
- * @property bool $width_100
- * @property bool $width_110
- * @property bool $width_120
- * @property bool $panel_doors
- * @property bool $framed_doors
- * @property int $category_id
+ * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Category|null $category
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute query()
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute where3dFinishing($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute whereAntiBurglaryDoor($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute whereBathroomDoor($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute whereCategoryId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute whereClassic($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute whereCplLaminate($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute whereFireDoor($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute whereFramedDoors($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute whereHplLaminate($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute whereInteriorEntranceDoor($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute whereIridiumFinishing($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute whereLacquered($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute whereLoft($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute whereModern($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute wherePanelDoors($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute wherePrimoFinishing($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute whereRetro($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute whereRoomDoor($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute whereRustic($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute whereSlidingDoor($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute whereSoundproofDoor($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute whereTechnicalDoors($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute whereWidth100($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute whereWidth110($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute whereWidth120($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute whereWidth60($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute whereWidth70($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute whereWidth80($value)
- * @method static \Illuminate\Database\Eloquent\Builder|AdditionalAttribute whereWidth90($value)
+ * @property int $published
+ * @property int|null $position
+ * @property int $_lft
+ * @property int $_rgt
+ * @property int|null $parent_id
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \A17\Twill\Models\Block> $blocks
+ * @property-read int|null $blocks_count
+ * @property-read \A17\Twill\Models\NestedsetCollection<int, Page> $children
+ * @property-read int|null $children_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \A17\Twill\Models\File> $files
+ * @property-read int|null $files_count
+ * @property-read string $ancestors_slug
+ * @property-read string $nested_slug
+ * @property-read string $slug
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \A17\Twill\Models\Media> $medias
+ * @property-read int|null $medias_count
+ * @property-read Page|null $parent
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Revisions\PageRevision> $revisions
+ * @property-read int|null $revisions_count
+ * @property-write mixed $publish_start_date
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Slugs\PageSlug> $slugs
+ * @property-read int|null $slugs_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \A17\Twill\Models\Tag> $tags
+ * @property-read int|null $tags_count
+ * @property-read \App\Models\Translations\PageTranslation|null $translation
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Translations\PageTranslation> $translations
+ * @property-read int|null $translations_count
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Model accessible()
+ * @method static \A17\Twill\Models\NestedsetCollection<int, static> all($columns = ['*'])
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page ancestorsAndSelf($id, array $columns = [])
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page ancestorsOf($id, array $columns = [])
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page applyNestedSetScope(?string $table = null)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page countErrors()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page d()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page defaultOrder(string $dir = 'asc')
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page descendantsAndSelf($id, array $columns = [])
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page descendantsOf($id, array $columns = [], $andSelf = false)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Model draft()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page fixSubtree($root)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page fixTree($root = null)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page forFallbackLocaleSlug(string $slug)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page forInactiveSlug(string $slug)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page forSlug(string $slug)
+ * @method static \A17\Twill\Models\NestedsetCollection<int, static> get($columns = ['*'])
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page getNodeData($id, $required = false)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page getPlainNodeData($id, $required = false)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page getTotalErrors()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page hasChildren()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page hasParent()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page isBroken()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page leaves(array $columns = [])
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page listsTranslations(string $translationField)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page makeGap(int $cut, int $height)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page mine()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page moveNode($key, $position)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page newModelQuery()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page newQuery()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page notTranslatedIn(?string $locale = null)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Model onlyTrashed()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page orWhereAncestorOf(bool $id, bool $andSelf = false)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page orWhereDescendantOf($id)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page orWhereNodeBetween($values)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page orWhereNotDescendantOf($id)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page orWhereTranslation(string $translationField, $value, ?string $locale = null)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page orWhereTranslationLike(string $translationField, $value, ?string $locale = null)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page orderByRawByTranslation($orderRawString, $groupByField, $locale = null)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page orderByTranslation($orderField, $orderType = 'ASC', $locale = null)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page ordered()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Model published()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Model publishedInListings()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page query()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page rebuildSubtree($root, array $data, $delete = false)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page rebuildTree(array $data, $delete = false, $root = null)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page reversed()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page root(array $columns = [])
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page translated()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page translatedIn(?string $locale = null)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Model visible()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page whereAncestorOf($id, $andSelf = false, $boolean = 'and')
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page whereAncestorOrSelf($id)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page whereCreatedAt($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page whereDeletedAt($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page whereDescendantOf($id, $boolean = 'and', $not = false, $andSelf = false)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page whereDescendantOrSelf(string $id, string $boolean = 'and', string $not = false)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page whereId($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page whereIsAfter($id, $boolean = 'and')
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page whereIsBefore($id, $boolean = 'and')
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page whereIsLeaf()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page whereIsRoot()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page whereLft($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page whereNodeBetween($values, $boolean = 'and', $not = false, $query = null)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page whereNotDescendantOf($id)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page whereParentId($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page wherePosition($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page wherePublished($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page whereRgt($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Model whereTag($tags, string $type = 'slug')
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page whereTranslation(string $translationField, $value, ?string $locale = null, string $method = 'whereHas', string $operator = '=')
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page whereTranslationLike(string $translationField, $value, ?string $locale = null)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page whereUpdatedAt($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page withActiveTranslations(?string $locale = null)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page withDepth(string $as = 'depth')
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Model withTag($tags, string $type = 'slug')
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page withTranslation()
+ * @method static \Illuminate\Database\Eloquent\Builder|Page withTrashed()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Page withoutRoot()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Model withoutTag($tags, string $type = 'slug')
+ * @method static \Illuminate\Database\Eloquent\Builder|Page withoutTrashed()
  */
-	class AdditionalAttribute extends \Eloquent {}
+	class Page extends \Eloquent implements \A17\Twill\Models\Behaviors\Sortable {}
 }
 
 namespace App\Models{
 /**
- * App\Models\Attribute
+ * App\Models\Product
  *
  * @property int $id
  * @property string $name
- * @property string $value
- * @property string $img
  * @property string $slug
+ * @property string $type
+ * @property string $status
+ * @property string $catalog_visibility
+ * @property string $description
+ * @property string $short_description
+ * @property string $sku
+ * @property string $price
+ * @property string $regular_price
+ * @property string $sale_price
+ * @property string $stock_quantity
+ * @property string $stock_status
+ * @property string $weight
+ * @property string $length
+ * @property string $width
+ * @property string $height
+ * @property string $shipping_class
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Category> $categories
- * @property-read int|null $categories_count
- * @method static \Database\Factories\AttributeFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|Attribute newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Attribute newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Attribute query()
- * @method static \Illuminate\Database\Eloquent\Builder|Attribute whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Attribute whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Attribute whereImg($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Attribute whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Attribute whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Attribute whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Attribute whereValue($value)
+ * @method static \Database\Factories\ProductFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|Product newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Product newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Product query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereCatalogVisibility($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereHeight($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereLength($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereRegularPrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereSalePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereShippingClass($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereShortDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereSku($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereStockQuantity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereStockStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereWeight($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereWidth($value)
  */
-	class Attribute extends \Eloquent {}
+	class Product extends \Eloquent {}
 }
 
-namespace App\Models{
+namespace App\Models\Revisions{
 /**
- * App\Models\Category
+ * App\Models\Revisions\PageRevision
  *
  * @property int $id
- * @property string|null $name
- * @property int|null $category_id
- * @property array|null $door_specification
- * @property array|null $technical_parameter
- * @property array|null $additional_options
- * @property array|null $gallery_imgs
- * @property string|null $breadcrumb
- * @property string|null $img_url
+ * @property int $page_id
+ * @property int|null $user_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\AdditionalAttribute|null $AdditionalAttribute
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Attribute> $attributes
- * @property-read int|null $attributes_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Door> $doors
- * @property-read int|null $doors_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Parameter> $parameters
- * @property-read int|null $parameters_count
- * @method static \Database\Factories\CategoryFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|Category newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Category newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Category query()
- * @method static \Illuminate\Database\Eloquent\Builder|Category whereAdditionalOptions($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Category whereBreadcrumb($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Category whereCategoryId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Category whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Category whereDoorSpecification($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Category whereGalleryImgs($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Category whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Category whereImgUrl($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Category whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Category whereTechnicalParameter($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Category whereUpdatedAt($value)
+ * @property mixed $payload
+ * @property-read mixed $by_user
+ * @property-read \A17\Twill\Models\User|null $user
+ * @method static \Illuminate\Database\Eloquent\Builder|PageRevision newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PageRevision newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PageRevision query()
+ * @method static \Illuminate\Database\Eloquent\Builder|PageRevision whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PageRevision whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PageRevision wherePageId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PageRevision wherePayload($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PageRevision whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PageRevision whereUserId($value)
  */
-	class Category extends \Eloquent {}
+	class PageRevision extends \Eloquent {}
 }
 
-namespace App\Models{
+namespace App\Models\Slugs{
 /**
- * App\Models\Color
+ * App\Models\Slugs\PageSlug
  *
  * @property int $id
- * @property string|null $name
- * @property string|null $small_img
- * @property string|null $big_img
- * @property string|null $material_category
- * @property int $category_id
- * @property int $door_id
+ * @property int $page_id
+ * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Category $category
- * @property-read \App\Models\Door $door
- * @method static \Database\Factories\ColorFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|Color newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Color newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Color query()
- * @method static \Illuminate\Database\Eloquent\Builder|Color whereBigImg($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Color whereCategoryId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Color whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Color whereDoorId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Color whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Color whereMaterialCategory($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Color whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Color whereSmallImg($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Color whereUpdatedAt($value)
+ * @property string $slug
+ * @property string $locale
+ * @property int $active
+ * @property-write mixed $publish_start_date
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \A17\Twill\Models\Tag> $tags
+ * @property-read int|null $tags_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Model accessible()
+ * @method static \Illuminate\Database\Eloquent\Builder|Model draft()
+ * @method static \Illuminate\Database\Eloquent\Builder|PageSlug newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PageSlug newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Model onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Model published()
+ * @method static \Illuminate\Database\Eloquent\Builder|Model publishedInListings()
+ * @method static \Illuminate\Database\Eloquent\Builder|PageSlug query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Model visible()
+ * @method static \Illuminate\Database\Eloquent\Builder|PageSlug whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PageSlug whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PageSlug whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PageSlug whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PageSlug whereLocale($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PageSlug wherePageId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PageSlug whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Model whereTag($tags, string $type = 'slug')
+ * @method static \Illuminate\Database\Eloquent\Builder|PageSlug whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Model withTag($tags, string $type = 'slug')
+ * @method static \Illuminate\Database\Eloquent\Builder|PageSlug withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Model withoutTag($tags, string $type = 'slug')
+ * @method static \Illuminate\Database\Eloquent\Builder|PageSlug withoutTrashed()
  */
-	class Color extends \Eloquent {}
+	class PageSlug extends \Eloquent {}
 }
 
-namespace App\Models{
+namespace App\Models\Translations{
 /**
- * App\Models\Door
+ * App\Models\Translations\PageTranslation
  *
  * @property int $id
- * @property string $name
- * @property string $img_url
- * @property string $tag
- * @property string $tag_name
- * @property string $tag_img_url
- * @property string $tag_category
- * @property int $category_id
+ * @property int $page_id
+ * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Category $category
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Color> $colors
- * @property-read int|null $colors_count
- * @method static \Database\Factories\DoorFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|Door newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Door newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Door query()
- * @method static \Illuminate\Database\Eloquent\Builder|Door whereCategoryId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Door whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Door whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Door whereImgUrl($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Door whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Door whereTag($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Door whereTagCategory($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Door whereTagImgUrl($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Door whereTagName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Door whereUpdatedAt($value)
+ * @property string $locale
+ * @property int $active
+ * @property string|null $title
+ * @property string|null $description
+ * @property-write mixed $publish_start_date
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \A17\Twill\Models\Tag> $tags
+ * @property-read int|null $tags_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Model accessible()
+ * @method static \Illuminate\Database\Eloquent\Builder|Model draft()
+ * @method static \Illuminate\Database\Eloquent\Builder|PageTranslation newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PageTranslation newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Model onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Model published()
+ * @method static \Illuminate\Database\Eloquent\Builder|Model publishedInListings()
+ * @method static \Illuminate\Database\Eloquent\Builder|PageTranslation query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Model visible()
+ * @method static \Illuminate\Database\Eloquent\Builder|PageTranslation whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PageTranslation whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PageTranslation whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PageTranslation whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PageTranslation whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PageTranslation whereLocale($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PageTranslation wherePageId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Model whereTag($tags, string $type = 'slug')
+ * @method static \Illuminate\Database\Eloquent\Builder|PageTranslation whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PageTranslation whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Model withTag($tags, string $type = 'slug')
+ * @method static \Illuminate\Database\Eloquent\Builder|PageTranslation withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Model withoutTag($tags, string $type = 'slug')
+ * @method static \Illuminate\Database\Eloquent\Builder|PageTranslation withoutTrashed()
  */
-	class Door extends \Eloquent {}
-}
-
-namespace App\Models{
-/**
- * App\Models\Parameter
- *
- * @method static \Database\Factories\ParameterFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|Parameter newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Parameter newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Parameter query()
- */
-	class Parameter extends \Eloquent {}
-}
-
-namespace App\Models{
-/**
- * App\Models\Tag
- *
- * @property int $id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|Tag newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Tag newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Tag query()
- * @method static \Illuminate\Database\Eloquent\Builder|Tag whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Tag whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Tag whereUpdatedAt($value)
- */
-	class Tag extends \Eloquent {}
+	class PageTranslation extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -267,7 +310,6 @@ namespace App\Models{
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Sanctum\PersonalAccessToken> $tokens
  * @property-read int|null $tokens_count
- * @method static \Database\Factories\UserFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User query()

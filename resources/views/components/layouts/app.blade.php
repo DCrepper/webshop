@@ -31,7 +31,7 @@
         <div class="min-h-screen">
 
             <!-- Page Heading -->
-            <x-layouts.navigation.navbar />
+
             @if (isset($header))
                 <div class="mx-auto max-w-7xl px-4 py-6 lg:px-8 sm:px-6">
                     {{ $header }}

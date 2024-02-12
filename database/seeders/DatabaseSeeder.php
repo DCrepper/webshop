@@ -13,9 +13,6 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            AttributeSeeder::class,
-            CategorySeeder::class,
-            AdditionalAttributeSeeder::class,
         ]);
     }
 }
