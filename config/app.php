@@ -168,6 +168,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\VoltServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -200,6 +201,6 @@ return [
 
     'wordpress_baseurl' => env('WORDPRESS_BASEURL'),
     'wordpress_wc_baseurl' => env('WORDPRESS_WC_BASEURL'),
-    'wordpress_baseurl_costume' => env('WORDPRESS_BASE_COSTUME'),
+    'wordpress_baseurl_costume' => env('WORDPRESS_BASEURL_COSTUME'),
 
 ];

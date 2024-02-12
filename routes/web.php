@@ -1,11 +1,8 @@
 <?php
 
+use App\Http\Controllers\ProductController;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DoorController;
-use App\Http\Controllers\CookieController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ManagePageContentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +14,15 @@ use App\Http\Controllers\ManagePageContentController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/', [ProductController::class, 'index'])->name('products');
+Route::get('/products', [ProductController::class, 'index'])->name('products');
+Route::get('/checkout', [ProductController::class, 'checkout'])->name('checkout');
+Route::view('dashboard', 'dashboard')
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
-Route::get('/', function () {
-    return view('index');
-})->name('home');
+Route::view('profile', 'profile')
+    ->middleware(['auth'])
+    ->name('profile');
+
+require __DIR__ . '/auth.php';

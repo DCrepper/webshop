@@ -15,7 +15,7 @@ use BenSampo\Enum\Enum;
  * @method static static PRODUCTSTAGS()
  * @method static static COLLECTIONS()
  */
-final class EndPoint extends Enum
+final class WordpressEndpoints extends Enum
 {
     const POSTS = 'posts/';
     const MAEDIA = 'media/';

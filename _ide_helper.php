@@ -14609,76 +14609,6 @@
                         /** @var \Illuminate\Routing\Router $instance */
                         return $instance->macroCall($method, $parameters);
         }
-                    /**
-         * 
-         *
-         * @see \A17\Twill\RouteServiceProvider::registerRouteMacros()
-         * @param string $slug
-         * @param array $options
-         * @param array $resource_options
-         * @param bool $resource
-         * @return void 
-         * @static 
-         */ 
-        public static function module($slug, $options = [], $resource_options = [], $resource = true)
-        {
-                        \Illuminate\Routing\Router::module($slug, $options, $resource_options, $resource);
-        }
-                    /**
-         * 
-         *
-         * @see \A17\Twill\RouteServiceProvider::registerRouteMacros()
-         * @param mixed $slug
-         * @param mixed $options
-         * @param mixed $resource_options
-         * @param mixed $resource
-         * @static 
-         */ 
-        public static function twillSingleton($slug, $options = [], $resource_options = [], $resource = true)
-        {
-                        return \Illuminate\Routing\Router::twillSingleton($slug, $options, $resource_options, $resource);
-        }
-                    /**
-         * 
-         *
-         * @see \Laravel\Ui\AuthRouteMethods::auth()
-         * @param mixed $options
-         * @static 
-         */ 
-        public static function auth($options = [])
-        {
-                        return \Illuminate\Routing\Router::auth($options);
-        }
-                    /**
-         * 
-         *
-         * @see \Laravel\Ui\AuthRouteMethods::resetPassword()
-         * @static 
-         */ 
-        public static function resetPassword()
-        {
-                        return \Illuminate\Routing\Router::resetPassword();
-        }
-                    /**
-         * 
-         *
-         * @see \Laravel\Ui\AuthRouteMethods::confirmPassword()
-         * @static 
-         */ 
-        public static function confirmPassword()
-        {
-                        return \Illuminate\Routing\Router::confirmPassword();
-        }
-                    /**
-         * 
-         *
-         * @see \Laravel\Ui\AuthRouteMethods::emailVerification()
-         * @static 
-         */ 
-        public static function emailVerification()
-        {
-                        return \Illuminate\Routing\Router::emailVerification();
-        }
          
     }
             /**
@@ -18868,770 +18798,7 @@
      
 }
 
-        namespace A17\Twill\Facades { 
-            /**
-     * 
-     *
-     */ 
-        class TwillCapsules {
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function registerPackageCapsule($name, $namespace, $path, $singular = null, $enabled = true, $automaticNavigation = true)
-        {
-                        /** @var \A17\Twill\TwillCapsules $instance */
-                        return $instance->registerPackageCapsule($name, $namespace, $path, $singular, $enabled, $automaticNavigation);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function registerCapsule($capsule)
-        {
-                        /** @var \A17\Twill\TwillCapsules $instance */
-                        return $instance->registerCapsule($capsule);
-        }
-                    /**
-         * Generates a non package capsule object.
-         *
-         * @static 
-         */ 
-        public static function makeProjectCapsule($name)
-        {
-                        /** @var \A17\Twill\TwillCapsules $instance */
-                        return $instance->makeProjectCapsule($name);
-        }
-                    /**
-         * 
-         *
-         * @throws \A17\Twill\Exceptions\NoCapsuleFoundException
-         * @static 
-         */ 
-        public static function getCapsuleForModule($module)
-        {
-                        /** @var \A17\Twill\TwillCapsules $instance */
-                        return $instance->getCapsuleForModule($module);
-        }
-                    /**
-         * 
-         *
-         * @throws \A17\Twill\Exceptions\NoCapsuleFoundException
-         * @static 
-         */ 
-        public static function getCapsuleForModel($model)
-        {
-                        /** @var \A17\Twill\TwillCapsules $instance */
-                        return $instance->getCapsuleForModel($model);
-        }
-                    /**
-         * 
-         *
-         * @return \A17\Twill\Collection<Capsule> 
-         * @static 
-         */ 
-        public static function getRegisteredCapsules()
-        {
-                        /** @var \A17\Twill\TwillCapsules $instance */
-                        return $instance->getRegisteredCapsules();
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function loadProjectCapsules()
-        {
-                        /** @var \A17\Twill\TwillCapsules $instance */
-                        return $instance->loadProjectCapsules();
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function capsuleNamespace($capsuleName, $type = null)
-        {
-                        /** @var \A17\Twill\TwillCapsules $instance */
-                        return $instance->capsuleNamespace($capsuleName, $type);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function capsuleNamespaceToPath($namespace, $capsuleNamespace, $rootPath)
-        {
-                        /** @var \A17\Twill\TwillCapsules $instance */
-                        return $instance->capsuleNamespaceToPath($namespace, $capsuleNamespace, $rootPath);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function getProjectCapsulesPath()
-        {
-                        /** @var \A17\Twill\TwillCapsules $instance */
-                        return $instance->getProjectCapsulesPath();
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function getAutoloader()
-        {
-                        /** @var \A17\Twill\TwillCapsules $instance */
-                        return $instance->getAutoloader();
-        }
-         
-    }
-            /**
-     * 
-     *
-     */ 
-        class TwillRoutes {
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function getModuleRouteFromRegistry($module)
-        {
-                        /** @var \A17\Twill\TwillRoutes $instance */
-                        return $instance->getModuleRouteFromRegistry($module);
-        }
-                    /**
-         * Only useful for testing purposes.
-         *
-         * @static 
-         */ 
-        public static function addToRouteRegistry($slug, $prefix)
-        {
-                        /** @var \A17\Twill\TwillRoutes $instance */
-                        return $instance->addToRouteRegistry($slug, $prefix);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function buildModuleRoutes($slug, $options = [], $resource_options = [], $resource = true)
-        {
-                        /** @var \A17\Twill\TwillRoutes $instance */
-                        return $instance->buildModuleRoutes($slug, $options, $resource_options, $resource);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function registerRoutes($router, $groupOptions, $middlewares, $supportSubdomainRouting, $namespace, $routesFile, $instant = false)
-        {
-                        /** @var \A17\Twill\TwillRoutes $instance */
-                        return $instance->registerRoutes($router, $groupOptions, $middlewares, $supportSubdomainRouting, $namespace, $routesFile, $instant);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function registerRoutePatterns()
-        {
-                        /** @var \A17\Twill\TwillRoutes $instance */
-                        return $instance->registerRoutePatterns();
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function getRouteGroupOptions()
-        {
-                        /** @var \A17\Twill\TwillRoutes $instance */
-                        return $instance->getRouteGroupOptions();
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function getRouteMiddleware($middleware = null)
-        {
-                        /** @var \A17\Twill\TwillRoutes $instance */
-                        return $instance->getRouteMiddleware($middleware);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function supportSubdomainRouting()
-        {
-                        /** @var \A17\Twill\TwillRoutes $instance */
-                        return $instance->supportSubdomainRouting();
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function registerCapsuleRoutes($router, $capsule)
-        {
-                        /** @var \A17\Twill\TwillRoutes $instance */
-                        return $instance->registerCapsuleRoutes($router, $capsule);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function singleton($slug, $options = [], $resource_options = [], $resource = true)
-        {
-                        /** @var \A17\Twill\TwillRoutes $instance */
-                        return $instance->singleton($slug, $options, $resource_options, $resource);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function module($slug, $options = [], $resource_options = [], $resource = true)
-        {
-                        /** @var \A17\Twill\TwillRoutes $instance */
-                        return $instance->module($slug, $options, $resource_options, $resource);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function moduleShowWithPreview($moduleName, $routePrefix = null, $controllerName = null)
-        {
-                        /** @var \A17\Twill\TwillRoutes $instance */
-                        return $instance->moduleShowWithPreview($moduleName, $routePrefix, $controllerName);
-        }
-         
-    }
-            /**
-     * 
-     *
-     */ 
-        class TwillBlocks {
-                    /**
-         * Registers a blocks directory.
-         * 
-         * When the blockCollection is already initialized, we read the blocks and merge them in.
-         * If the blockCollection is not yet initialized, we add it to the local static so that we
-         * can process it once the collection is needed.
-         *
-         * @static 
-         */ 
-        public static function registerPackageBlocksDirectory($path, $renderNamespace = null)
-        {
-                        /** @var \A17\Twill\TwillBlocks $instance */
-                        return $instance->registerPackageBlocksDirectory($path, $renderNamespace);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function registerDynamicRepeater($name, $repeater)
-        {
-                        /** @var \A17\Twill\TwillBlocks $instance */
-                        return $instance->registerDynamicRepeater($name, $repeater);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function discoverDynamicRepeaters($collection)
-        {
-                        /** @var \A17\Twill\TwillBlocks $instance */
-                        return $instance->discoverDynamicRepeaters($collection);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function getAvailableRepeaters()
-        {
-                        /** @var \A17\Twill\TwillBlocks $instance */
-                        return $instance->getAvailableRepeaters();
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function registerComponentBlocks($namespace, $path)
-        {
-                        /** @var \A17\Twill\TwillBlocks $instance */
-                        return $instance->registerComponentBlocks($namespace, $path);
-        }
-                    /**
-         * Registers a repeaters directory.
-         * 
-         * When the blockCollection is already initialized, we read the repeaters and merge them in.
-         * If the blockCollection is not yet initialized, we add it to the local static so that we
-         * can process it once the collection is needed.
-         *
-         * @static 
-         */ 
-        public static function registerPackageRepeatersDirectory($path, $renderNamespace = null)
-        {
-                        /** @var \A17\Twill\TwillBlocks $instance */
-                        return $instance->registerPackageRepeatersDirectory($path, $renderNamespace);
-        }
-                    /**
-         * Only when the block collection is actually requested we parse all the information.
-         *
-         * @static 
-         */ 
-        public static function getBlockCollection()
-        {
-                        /** @var \A17\Twill\TwillBlocks $instance */
-                        return $instance->getBlockCollection();
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function registerManualBlock($blockClass)
-        {
-                        /** @var \A17\Twill\TwillBlocks $instance */
-                        return $instance->registerManualBlock($blockClass);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function findByName($name)
-        {
-                        /** @var \A17\Twill\TwillBlocks $instance */
-                        return $instance->findByName($name);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function findRepeaterByName($name)
-        {
-                        /** @var \A17\Twill\TwillBlocks $instance */
-                        return $instance->findRepeaterByName($name);
-        }
-                    /**
-         * Gets all blocks and repeaters.
-         *
-         * @return \Illuminate\Support\Collection|\A17\Twill\Services\Blocks\Block[] 
-         * @static 
-         */ 
-        public static function getAll()
-        {
-                        /** @var \A17\Twill\TwillBlocks $instance */
-                        return $instance->getAll();
-        }
-                    /**
-         * 
-         *
-         * @return \Illuminate\Support\Collection|\A17\Twill\Services\Blocks\Block[] 
-         * @static 
-         */ 
-        public static function getBlocks($withSettingsBlocks = false)
-        {
-                        /** @var \A17\Twill\TwillBlocks $instance */
-                        return $instance->getBlocks($withSettingsBlocks);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function getSettingsBlocks()
-        {
-                        /** @var \A17\Twill\TwillBlocks $instance */
-                        return $instance->getSettingsBlocks();
-        }
-                    /**
-         * 
-         *
-         * @return \Illuminate\Support\Collection|\A17\Twill\Services\Blocks\Block[] 
-         * @static 
-         */ 
-        public static function getRepeaters()
-        {
-                        /** @var \A17\Twill\TwillBlocks $instance */
-                        return $instance->getRepeaters();
-        }
-                    /**
-         * Gets the collection of Block objects from a given directory.
-         *
-         * @static 
-         */ 
-        public static function readBlocksFromDirectory($directory, $source, $type, $renderNamespace = null)
-        {
-                        /** @var \A17\Twill\TwillBlocks $instance */
-                        return $instance->readBlocksFromDirectory($directory, $source, $type, $renderNamespace);
-        }
-                    /**
-         * Gets all the crop configs, also those of component blocks.
-         *
-         * @static 
-         */ 
-        public static function getAllCropConfigs()
-        {
-                        /** @var \A17\Twill\TwillBlocks $instance */
-                        return $instance->getAllCropConfigs();
-        }
-         
-    }
-            /**
-     * 
-     *
-     */ 
-        class TwillUtil {
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function hasRepeaterIdFor($frontEndId)
-        {
-                        /** @var \A17\Twill\TwillUtil $instance */
-                        return $instance->hasRepeaterIdFor($frontEndId);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function registerRepeaterId($frontEndId, $dbId)
-        {
-                        /** @var \A17\Twill\TwillUtil $instance */
-                        return $instance->registerRepeaterId($frontEndId, $dbId);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function hasBlockIdFor($frontEndId)
-        {
-                        /** @var \A17\Twill\TwillUtil $instance */
-                        return $instance->hasBlockIdFor($frontEndId);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function registerBlockId($frontEndId, $dbId)
-        {
-                        /** @var \A17\Twill\TwillUtil $instance */
-                        return $instance->registerBlockId($frontEndId, $dbId);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function clearTempStore()
-        {
-                        /** @var \A17\Twill\TwillUtil $instance */
-                        return $instance->clearTempStore();
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function parseInternalLinks($content)
-        {
-                        /** @var \A17\Twill\TwillUtil $instance */
-                        return $instance->parseInternalLinks($content);
-        }
-         
-    }
-            /**
-     * 
-     *
-     */ 
-        class TwillAppSettings {
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function registerSettingsGroup($section)
-        {
-                        /** @var \A17\Twill\TwillAppSettings $instance */
-                        return $instance->registerSettingsGroup($section);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function registerSettingsGroups(...$sections)
-        {
-                        /** @var \A17\Twill\TwillAppSettings $instance */
-                        return $instance->registerSettingsGroups(...$sections);
-        }
-                    /**
-         * 
-         *
-         * @return array<string, SettingsGroup> 
-         * @static 
-         */ 
-        public static function getAllGroups()
-        {
-                        /** @var \A17\Twill\TwillAppSettings $instance */
-                        return $instance->getAllGroups();
-        }
-                    /**
-         * 
-         *
-         * @return array<int, SettingsGroup> 
-         * @static 
-         */ 
-        public static function getGroupsForNavigation()
-        {
-                        /** @var \A17\Twill\TwillAppSettings $instance */
-                        return $instance->getGroupsForNavigation();
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function settingsAreEnabled()
-        {
-                        /** @var \A17\Twill\TwillAppSettings $instance */
-                        return $instance->settingsAreEnabled();
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function getTranslated($identifier)
-        {
-                        /** @var \A17\Twill\TwillAppSettings $instance */
-                        return $instance->getTranslated($identifier);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function get($identifier)
-        {
-                        /** @var \A17\Twill\TwillAppSettings $instance */
-                        return $instance->get($identifier);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function getGroupForName($groupName)
-        {
-                        /** @var \A17\Twill\TwillAppSettings $instance */
-                        return $instance->getGroupForName($groupName);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function getGroupDataForSectionAndName($group, $section)
-        {
-                        /** @var \A17\Twill\TwillAppSettings $instance */
-                        return $instance->getGroupDataForSectionAndName($group, $section);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function getBlockServiceForGroupAndSection($group, $section)
-        {
-                        /** @var \A17\Twill\TwillAppSettings $instance */
-                        return $instance->getBlockServiceForGroupAndSection($group, $section);
-        }
-         
-    }
-            /**
-     * 
-     *
-     */ 
-        class TwillNavigation {
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function addLink($link)
-        {
-                        /** @var \A17\Twill\TwillNavigation $instance */
-                        return $instance->addLink($link);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function addSecondaryNavigationForCurrentRequest($link)
-        {
-                        /** @var \A17\Twill\TwillNavigation $instance */
-                        return $instance->addSecondaryNavigationForCurrentRequest($link);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function getSecondaryRequestLinks()
-        {
-                        /** @var \A17\Twill\TwillNavigation $instance */
-                        return $instance->getSecondaryRequestLinks();
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function getActiveSecondaryNavigationLink()
-        {
-                        /** @var \A17\Twill\TwillNavigation $instance */
-                        return $instance->getActiveSecondaryNavigationLink();
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function getActivePrimaryNavigationLink()
-        {
-                        /** @var \A17\Twill\TwillNavigation $instance */
-                        return $instance->getActivePrimaryNavigationLink();
-        }
-                    /**
-         * 
-         *
-         * @return array<string, array<int, NavigationLink>> 
-         * @static 
-         */ 
-        public static function buildNavigationTree()
-        {
-                        /** @var \A17\Twill\TwillNavigation $instance */
-                        return $instance->buildNavigationTree();
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function clear()
-        {
-                        /** @var \A17\Twill\TwillNavigation $instance */
-                        return $instance->clear();
-        }
-         
-    }
-            /**
-     * 
-     *
-     */ 
-        class TwillPermissions {
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function enabled()
-        {
-                        /** @var \A17\Twill\TwillPermissions $instance */
-                        return $instance->enabled();
-        }
-                    /**
-         * 
-         *
-         * @return \MyCLabs\Enum\Enum 
-         * @static 
-         */ 
-        public static function roles()
-        {
-                        /** @var \A17\Twill\TwillPermissions $instance */
-                        return $instance->roles();
-        }
-                    /**
-         * The role enumeration class. Must extend MyCLabs\Enum\Enum.
-         * 
-         * See A17\Twill\Models\Enums\UserRole for an example.
-         *
-         * @static 
-         */ 
-        public static function setRoleEnum($roleEnum)
-        {
-                        /** @var \A17\Twill\TwillPermissions $instance */
-                        return $instance->setRoleEnum($roleEnum);
-        }
-                    /**
-         * Return the module name if the module has permissions, otherwise return false.
-         *
-         * @static 
-         */ 
-        public static function getPermissionModule($moduleName)
-        {
-                        /** @var \A17\Twill\TwillPermissions $instance */
-                        return $instance->getPermissionModule($moduleName);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function levelIs($level)
-        {
-                        /** @var \A17\Twill\TwillPermissions $instance */
-                        return $instance->levelIs($level);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function levelIsOneOf($levels)
-        {
-                        /** @var \A17\Twill\TwillPermissions $instance */
-                        return $instance->levelIsOneOf($levels);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function showUserSecondaryNavigation()
-        {
-                        /** @var \A17\Twill\TwillPermissions $instance */
-                        return $instance->showUserSecondaryNavigation();
-        }
-         
-    }
-     
-}
-
-    namespace Barryvdh\Debugbar\Facades { 
+        namespace Barryvdh\Debugbar\Facades { 
             /**
      * 
      *
@@ -20168,202 +19335,6 @@
      
 }
 
-    namespace Intervention\Image\Facades { 
-            /**
-     * 
-     *
-     */ 
-        class Image {
-                    /**
-         * Overrides configuration settings
-         *
-         * @param array $config
-         * @return self 
-         * @static 
-         */ 
-        public static function configure($config = [])
-        {
-                        /** @var \Intervention\Image\ImageManager $instance */
-                        return $instance->configure($config);
-        }
-                    /**
-         * Initiates an Image instance from different input types
-         *
-         * @param mixed $data
-         * @return \Intervention\Image\Image 
-         * @static 
-         */ 
-        public static function make($data)
-        {
-                        /** @var \Intervention\Image\ImageManager $instance */
-                        return $instance->make($data);
-        }
-                    /**
-         * Creates an empty image canvas
-         *
-         * @param int $width
-         * @param int $height
-         * @param mixed $background
-         * @return \Intervention\Image\Image 
-         * @static 
-         */ 
-        public static function canvas($width, $height, $background = null)
-        {
-                        /** @var \Intervention\Image\ImageManager $instance */
-                        return $instance->canvas($width, $height, $background);
-        }
-                    /**
-         * Create new cached image and run callback
-         * (requires additional package intervention/imagecache)
-         *
-         * @param \Closure $callback
-         * @param int $lifetime
-         * @param boolean $returnObj
-         * @return \Image 
-         * @static 
-         */ 
-        public static function cache($callback, $lifetime = null, $returnObj = false)
-        {
-                        /** @var \Intervention\Image\ImageManager $instance */
-                        return $instance->cache($callback, $lifetime, $returnObj);
-        }
-         
-    }
-     
-}
-
-    namespace Laravel\Socialite\Facades { 
-            /**
-     * 
-     *
-     * @see \Laravel\Socialite\SocialiteManager
-     */ 
-        class Socialite {
-                    /**
-         * Get a driver instance.
-         *
-         * @param string $driver
-         * @return mixed 
-         * @static 
-         */ 
-        public static function with($driver)
-        {
-                        /** @var \Laravel\Socialite\SocialiteManager $instance */
-                        return $instance->with($driver);
-        }
-                    /**
-         * Build an OAuth 2 provider instance.
-         *
-         * @param string $provider
-         * @param array $config
-         * @return \Laravel\Socialite\Two\AbstractProvider 
-         * @static 
-         */ 
-        public static function buildProvider($provider, $config)
-        {
-                        /** @var \Laravel\Socialite\SocialiteManager $instance */
-                        return $instance->buildProvider($provider, $config);
-        }
-                    /**
-         * Format the server configuration.
-         *
-         * @param array $config
-         * @return array 
-         * @static 
-         */ 
-        public static function formatConfig($config)
-        {
-                        /** @var \Laravel\Socialite\SocialiteManager $instance */
-                        return $instance->formatConfig($config);
-        }
-                    /**
-         * Forget all of the resolved driver instances.
-         *
-         * @return \Laravel\Socialite\SocialiteManager 
-         * @static 
-         */ 
-        public static function forgetDrivers()
-        {
-                        /** @var \Laravel\Socialite\SocialiteManager $instance */
-                        return $instance->forgetDrivers();
-        }
-                    /**
-         * Set the container instance used by the manager.
-         *
-         * @param \Illuminate\Contracts\Container\Container $container
-         * @return \Laravel\Socialite\SocialiteManager 
-         * @static 
-         */ 
-        public static function setContainer($container)
-        {
-                        /** @var \Laravel\Socialite\SocialiteManager $instance */
-                        return $instance->setContainer($container);
-        }
-                    /**
-         * Get the default driver name.
-         *
-         * @return string 
-         * @throws \InvalidArgumentException
-         * @static 
-         */ 
-        public static function getDefaultDriver()
-        {
-                        /** @var \Laravel\Socialite\SocialiteManager $instance */
-                        return $instance->getDefaultDriver();
-        }
-                    /**
-         * Get a driver instance.
-         *
-         * @param string|null $driver
-         * @return mixed 
-         * @throws \InvalidArgumentException
-         * @static 
-         */ 
-        public static function driver($driver = null)
-        {            //Method inherited from \Illuminate\Support\Manager         
-                        /** @var \Laravel\Socialite\SocialiteManager $instance */
-                        return $instance->driver($driver);
-        }
-                    /**
-         * Register a custom driver creator Closure.
-         *
-         * @param string $driver
-         * @param \Closure $callback
-         * @return \Laravel\Socialite\SocialiteManager 
-         * @static 
-         */ 
-        public static function extend($driver, $callback)
-        {            //Method inherited from \Illuminate\Support\Manager         
-                        /** @var \Laravel\Socialite\SocialiteManager $instance */
-                        return $instance->extend($driver, $callback);
-        }
-                    /**
-         * Get all of the created "drivers".
-         *
-         * @return array 
-         * @static 
-         */ 
-        public static function getDrivers()
-        {            //Method inherited from \Illuminate\Support\Manager         
-                        /** @var \Laravel\Socialite\SocialiteManager $instance */
-                        return $instance->getDrivers();
-        }
-                    /**
-         * Get the container instance used by the manager.
-         *
-         * @return \Illuminate\Contracts\Container\Container 
-         * @static 
-         */ 
-        public static function getContainer()
-        {            //Method inherited from \Illuminate\Support\Manager         
-                        /** @var \Laravel\Socialite\SocialiteManager $instance */
-                        return $instance->getContainer();
-        }
-         
-    }
-     
-}
-
     namespace Livewire { 
             /**
      * 
@@ -20372,13 +19343,33 @@
      */ 
         class Livewire {
                     /**
+         * {@inheritDoc}
+         *
+         * @static 
+         */ 
+        public static function mount($name, $params = [], $key = null)
+        {
+                        /** @var \Livewire\Volt\LivewireManager $instance */
+                        return $instance->mount($name, $params, $key);
+        }
+                    /**
+         * {@inheritDoc}
+         *
+         * @static 
+         */ 
+        public static function update($snapshot, $diff, $calls)
+        {
+                        /** @var \Livewire\Volt\LivewireManager $instance */
+                        return $instance->update($snapshot, $diff, $calls);
+        }
+                    /**
          * 
          *
          * @static 
          */ 
         public static function setProvider($provider)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->setProvider($provider);
         }
                     /**
@@ -20387,8 +19378,8 @@
          * @static 
          */ 
         public static function provide($callback)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->provide($callback);
         }
                     /**
@@ -20397,8 +19388,8 @@
          * @static 
          */ 
         public static function component($name, $class = null)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->component($name, $class);
         }
                     /**
@@ -20407,8 +19398,8 @@
          * @static 
          */ 
         public static function componentHook($hook)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->componentHook($hook);
         }
                     /**
@@ -20417,8 +19408,8 @@
          * @static 
          */ 
         public static function propertySynthesizer($synth)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->propertySynthesizer($synth);
         }
                     /**
@@ -20427,8 +19418,8 @@
          * @static 
          */ 
         public static function directive($name, $callback)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->directive($name, $callback);
         }
                     /**
@@ -20437,8 +19428,8 @@
          * @static 
          */ 
         public static function precompiler($callback)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->precompiler($callback);
         }
                     /**
@@ -20447,8 +19438,8 @@
          * @static 
          */ 
         public static function new($name, $id = null)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->new($name, $id);
         }
                     /**
@@ -20457,8 +19448,8 @@
          * @static 
          */ 
         public static function isDiscoverable($componentNameOrClass)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->isDiscoverable($componentNameOrClass);
         }
                     /**
@@ -20467,8 +19458,8 @@
          * @static 
          */ 
         public static function resolveMissingComponent($resolver)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->resolveMissingComponent($resolver);
         }
                     /**
@@ -20476,19 +19467,9 @@
          *
          * @static 
          */ 
-        public static function mount($name, $params = [], $key = null)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
-                        return $instance->mount($name, $params, $key);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
         public static function snapshot($component)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->snapshot($component);
         }
                     /**
@@ -20497,8 +19478,8 @@
          * @static 
          */ 
         public static function fromSnapshot($snapshot)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->fromSnapshot($snapshot);
         }
                     /**
@@ -20507,8 +19488,8 @@
          * @static 
          */ 
         public static function listen($eventName, $callback)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->listen($eventName, $callback);
         }
                     /**
@@ -20517,8 +19498,8 @@
          * @static 
          */ 
         public static function current()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->current();
         }
                     /**
@@ -20526,19 +19507,9 @@
          *
          * @static 
          */ 
-        public static function update($snapshot, $diff, $calls)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
-                        return $instance->update($snapshot, $diff, $calls);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
         public static function updateProperty($component, $path, $value)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->updateProperty($component, $path, $value);
         }
                     /**
@@ -20547,8 +19518,8 @@
          * @static 
          */ 
         public static function isLivewireRequest()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->isLivewireRequest();
         }
                     /**
@@ -20557,8 +19528,8 @@
          * @static 
          */ 
         public static function componentHasBeenRendered()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->componentHasBeenRendered();
         }
                     /**
@@ -20567,8 +19538,8 @@
          * @static 
          */ 
         public static function forceAssetInjection()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->forceAssetInjection();
         }
                     /**
@@ -20577,8 +19548,8 @@
          * @static 
          */ 
         public static function setUpdateRoute($callback)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->setUpdateRoute($callback);
         }
                     /**
@@ -20587,8 +19558,8 @@
          * @static 
          */ 
         public static function getUpdateUri()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->getUpdateUri();
         }
                     /**
@@ -20597,8 +19568,8 @@
          * @static 
          */ 
         public static function setScriptRoute($callback)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->setScriptRoute($callback);
         }
                     /**
@@ -20607,8 +19578,8 @@
          * @static 
          */ 
         public static function useScriptTagAttributes($attributes)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->useScriptTagAttributes($attributes);
         }
                     /**
@@ -20617,8 +19588,8 @@
          * @static 
          */ 
         public static function withUrlParams($params)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->withUrlParams($params);
         }
                     /**
@@ -20627,8 +19598,8 @@
          * @static 
          */ 
         public static function withQueryParams($params)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->withQueryParams($params);
         }
                     /**
@@ -20637,8 +19608,8 @@
          * @static 
          */ 
         public static function withCookie($name, $value)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->withCookie($name, $value);
         }
                     /**
@@ -20647,8 +19618,8 @@
          * @static 
          */ 
         public static function withCookies($cookies)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->withCookies($cookies);
         }
                     /**
@@ -20657,8 +19628,8 @@
          * @static 
          */ 
         public static function withHeaders($headers)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->withHeaders($headers);
         }
                     /**
@@ -20667,8 +19638,8 @@
          * @static 
          */ 
         public static function test($name, $params = [])
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->test($name, $params);
         }
                     /**
@@ -20677,8 +19648,8 @@
          * @static 
          */ 
         public static function visit($name)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->visit($name);
         }
                     /**
@@ -20687,8 +19658,8 @@
          * @static 
          */ 
         public static function actingAs($user, $driver = null)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->actingAs($user, $driver);
         }
                     /**
@@ -20697,8 +19668,8 @@
          * @static 
          */ 
         public static function isRunningServerless()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->isRunningServerless();
         }
                     /**
@@ -20707,8 +19678,8 @@
          * @static 
          */ 
         public static function addPersistentMiddleware($middleware)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->addPersistentMiddleware($middleware);
         }
                     /**
@@ -20717,8 +19688,8 @@
          * @static 
          */ 
         public static function setPersistentMiddleware($middleware)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->setPersistentMiddleware($middleware);
         }
                     /**
@@ -20727,8 +19698,8 @@
          * @static 
          */ 
         public static function getPersistentMiddleware()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->getPersistentMiddleware();
         }
                     /**
@@ -20737,8 +19708,8 @@
          * @static 
          */ 
         public static function flushState()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->flushState();
         }
                     /**
@@ -20747,8 +19718,8 @@
          * @static 
          */ 
         public static function originalUrl()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->originalUrl();
         }
                     /**
@@ -20757,8 +19728,8 @@
          * @static 
          */ 
         public static function originalPath()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->originalPath();
         }
                     /**
@@ -20767,8 +19738,8 @@
          * @static 
          */ 
         public static function originalMethod()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->originalMethod();
         }
          
@@ -21430,182 +20401,6 @@
      
 }
 
-    namespace A17\Twill\Services\MediaLibrary { 
-            /**
-     * 
-     *
-     */ 
-        class ImageService {
-                    /**
-         * 
-         *
-         * @param string $path
-         * @return mixed 
-         * @static 
-         */ 
-        public static function render($path)
-        {
-                        /** @var \A17\Twill\Services\MediaLibrary\Glide $instance */
-                        return $instance->render($path);
-        }
-                    /**
-         * 
-         *
-         * @param string $id
-         * @return string 
-         * @static 
-         */ 
-        public static function getUrl($id, $params = [])
-        {
-                        /** @var \A17\Twill\Services\MediaLibrary\Glide $instance */
-                        return $instance->getUrl($id, $params);
-        }
-                    /**
-         * 
-         *
-         * @param string $id
-         * @return string 
-         * @static 
-         */ 
-        public static function getUrlWithCrop($id, $cropParams, $params = [])
-        {
-                        /** @var \A17\Twill\Services\MediaLibrary\Glide $instance */
-                        return $instance->getUrlWithCrop($id, $cropParams, $params);
-        }
-                    /**
-         * 
-         *
-         * @param string $id
-         * @param mixed $width
-         * @param mixed $height
-         * @return string 
-         * @static 
-         */ 
-        public static function getUrlWithFocalCrop($id, $cropParams, $width, $height, $params = [])
-        {
-                        /** @var \A17\Twill\Services\MediaLibrary\Glide $instance */
-                        return $instance->getUrlWithFocalCrop($id, $cropParams, $width, $height, $params);
-        }
-                    /**
-         * 
-         *
-         * @param string $id
-         * @return string 
-         * @static 
-         */ 
-        public static function getLQIPUrl($id, $params = [])
-        {
-                        /** @var \A17\Twill\Services\MediaLibrary\Glide $instance */
-                        return $instance->getLQIPUrl($id, $params);
-        }
-                    /**
-         * 
-         *
-         * @param string $id
-         * @return string 
-         * @static 
-         */ 
-        public static function getSocialUrl($id, $params = [])
-        {
-                        /** @var \A17\Twill\Services\MediaLibrary\Glide $instance */
-                        return $instance->getSocialUrl($id, $params);
-        }
-                    /**
-         * 
-         *
-         * @param string $id
-         * @return string 
-         * @static 
-         */ 
-        public static function getCmsUrl($id, $params = [])
-        {
-                        /** @var \A17\Twill\Services\MediaLibrary\Glide $instance */
-                        return $instance->getCmsUrl($id, $params);
-        }
-                    /**
-         * 
-         *
-         * @param string $id, string $preset
-         * @return string 
-         * @static 
-         */ 
-        public static function getPresetUrl($id, $preset)
-        {
-                        /** @var \A17\Twill\Services\MediaLibrary\Glide $instance */
-                        return $instance->getPresetUrl($id, $preset);
-        }
-                    /**
-         * 
-         *
-         * @param string $id
-         * @return string 
-         * @static 
-         */ 
-        public static function getRawUrl($id)
-        {
-                        /** @var \A17\Twill\Services\MediaLibrary\Glide $instance */
-                        return $instance->getRawUrl($id);
-        }
-                    /**
-         * 
-         *
-         * @param string $id
-         * @return array 
-         * @static 
-         */ 
-        public static function getDimensions($id)
-        {
-                        /** @var \A17\Twill\Services\MediaLibrary\Glide $instance */
-                        return $instance->getDimensions($id);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function getSocialFallbackUrl()
-        {
-                        /** @var \A17\Twill\Services\MediaLibrary\Glide $instance */
-                        return $instance->getSocialFallbackUrl();
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function getTransparentFallbackUrl()
-        {
-                        /** @var \A17\Twill\Services\MediaLibrary\Glide $instance */
-                        return $instance->getTransparentFallbackUrl();
-        }
-         
-    }
-     
-}
-
-    namespace A17\Twill\Services\FileLibrary { 
-            /**
-     * 
-     *
-     */ 
-        class FileService {
-                    /**
-         * 
-         *
-         * @param mixed $id
-         * @return mixed 
-         * @static 
-         */ 
-        public static function getUrl($id)
-        {
-                        /** @var \A17\Twill\Services\FileLibrary\Disk $instance */
-                        return $instance->getUrl($id);
-        }
-         
-    }
-     
-}
-
     namespace Illuminate\Http { 
             /**
      * 
@@ -21675,116 +20470,7 @@
      
 }
 
-    namespace Illuminate\Database\Schema { 
-            /**
-     * 
-     *
-     */ 
-        class Blueprint {
-                    /**
-         * 
-         *
-         * @see \Kalnoy\Nestedset\NestedSetServiceProvider::register()
-         * @static 
-         */ 
-        public static function nestedSet()
-        {
-                        return \Illuminate\Database\Schema\Blueprint::nestedSet();
-        }
-                    /**
-         * 
-         *
-         * @see \Kalnoy\Nestedset\NestedSetServiceProvider::register()
-         * @static 
-         */ 
-        public static function dropNestedSet()
-        {
-                        return \Illuminate\Database\Schema\Blueprint::dropNestedSet();
-        }
-         
-    }
-     
-}
-
     namespace Illuminate\Routing { 
-            /**
-     * 
-     *
-     * @mixin \Illuminate\Routing\RouteRegistrar
-     */ 
-        class Router {
-                    /**
-         * 
-         *
-         * @see \A17\Twill\RouteServiceProvider::registerRouteMacros()
-         * @param string $slug
-         * @param array $options
-         * @param array $resource_options
-         * @param bool $resource
-         * @return void 
-         * @static 
-         */ 
-        public static function module($slug, $options = [], $resource_options = [], $resource = true)
-        {
-                        \Illuminate\Routing\Router::module($slug, $options, $resource_options, $resource);
-        }
-                    /**
-         * 
-         *
-         * @see \A17\Twill\RouteServiceProvider::registerRouteMacros()
-         * @param mixed $slug
-         * @param mixed $options
-         * @param mixed $resource_options
-         * @param mixed $resource
-         * @static 
-         */ 
-        public static function twillSingleton($slug, $options = [], $resource_options = [], $resource = true)
-        {
-                        return \Illuminate\Routing\Router::twillSingleton($slug, $options, $resource_options, $resource);
-        }
-                    /**
-         * 
-         *
-         * @see \Laravel\Ui\AuthRouteMethods::auth()
-         * @param mixed $options
-         * @static 
-         */ 
-        public static function auth($options = [])
-        {
-                        return \Illuminate\Routing\Router::auth($options);
-        }
-                    /**
-         * 
-         *
-         * @see \Laravel\Ui\AuthRouteMethods::resetPassword()
-         * @static 
-         */ 
-        public static function resetPassword()
-        {
-                        return \Illuminate\Routing\Router::resetPassword();
-        }
-                    /**
-         * 
-         *
-         * @see \Laravel\Ui\AuthRouteMethods::confirmPassword()
-         * @static 
-         */ 
-        public static function confirmPassword()
-        {
-                        return \Illuminate\Routing\Router::confirmPassword();
-        }
-                    /**
-         * 
-         *
-         * @see \Laravel\Ui\AuthRouteMethods::emailVerification()
-         * @static 
-         */ 
-        public static function emailVerification()
-        {
-                        return \Illuminate\Routing\Router::emailVerification();
-        }
-         
-    }
             /**
      * 
      *
@@ -21908,6 +20594,40 @@
         public static function response($callback)
         {
                         return \Illuminate\View\View::response($callback);
+        }
+         
+    }
+     
+}
+
+    namespace Illuminate\Testing { 
+            /**
+     * 
+     *
+     * @mixin \Illuminate\Http\Response
+     */ 
+        class TestResponse {
+                    /**
+         * 
+         *
+         * @see \Livewire\Volt\VoltServiceProvider::registerTestingMacros()
+         * @param mixed $component
+         * @static 
+         */ 
+        public static function assertSeeVolt($component)
+        {
+                        return \Illuminate\Testing\TestResponse::assertSeeVolt($component);
+        }
+                    /**
+         * 
+         *
+         * @see \Livewire\Volt\VoltServiceProvider::registerTestingMacros()
+         * @param mixed $component
+         * @static 
+         */ 
+        public static function assertDontSeeVolt($component)
+        {
+                        return \Illuminate\Testing\TestResponse::assertDontSeeVolt($component);
         }
          
     }
@@ -25946,21 +24666,10 @@ namespace  {
             class Validator extends \Illuminate\Support\Facades\Validator {}
             class View extends \Illuminate\Support\Facades\View {}
             class Vite extends \Illuminate\Support\Facades\Vite {}
-            class TwillCapsules extends \A17\Twill\Facades\TwillCapsules {}
-            class TwillRoutes extends \A17\Twill\Facades\TwillRoutes {}
-            class TwillBlocks extends \A17\Twill\Facades\TwillBlocks {}
-            class TwillUtil extends \A17\Twill\Facades\TwillUtil {}
-            class TwillAppSettings extends \A17\Twill\Facades\TwillAppSettings {}
-            class TwillNavigation extends \A17\Twill\Facades\TwillNavigation {}
-            class TwillPermissions extends \A17\Twill\Facades\TwillPermissions {}
             class Debugbar extends \Barryvdh\Debugbar\Facades\Debugbar {}
-            class Image extends \Intervention\Image\Facades\Image {}
-            class Socialite extends \Laravel\Socialite\Facades\Socialite {}
             class Livewire extends \Livewire\Livewire {}
             class Excel extends \Maatwebsite\Excel\Facades\Excel {}
             class Flare extends \Spatie\LaravelIgnition\Facades\Flare {}
-            class ImageService extends \A17\Twill\Services\MediaLibrary\ImageService {}
-            class FileService extends \A17\Twill\Services\FileLibrary\FileService {}
      
 }
 
