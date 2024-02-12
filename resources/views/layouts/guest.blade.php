@@ -11,9 +11,6 @@
         <!-- Fonts -->
         <link href="https://fonts.bunny.net" rel="preconnect">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-        @livewireStyles
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
 
     <body class="font-sans text-gray-900 antialiased">
@@ -30,7 +27,6 @@
                 {{ $slot }}
             </div>
         </div>
-        @livewireScripts
     </body>
 
 </html>
