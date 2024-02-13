@@ -99,8 +99,8 @@
             </button>
         </form>
     </div>
-    <a
-        class="mt-4 flex items-center justify-center rounded bg-blue-600 px-3 py-2 text-sm font-medium uppercase text-white hover:bg-blue-500 focus:bg-blue-500 focus:outline-none">
+    <a class="mt-4 flex items-center justify-center rounded bg-blue-600 px-3 py-2 text-sm font-medium uppercase text-white hover:bg-blue-500 focus:bg-blue-500 focus:outline-none"
+        href="{{ route('checkout') }}" wire:navigate>
         <span>Checkout</span>
         <svg class="mx-2 h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             viewBox="0 0 24 24" stroke="currentColor">

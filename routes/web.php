@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProductController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ProductController::class, 'index'])->name('products');
 Route::get('/products', [ProductController::class, 'index'])->name('products');
 Route::get('/checkout', [ProductController::class, 'checkout'])->name('checkout');
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/add/{product}', [CartController::class, 'addProduct'])->name('cart.add');
+Route::get('/cart/clear', [CartController::class, 'clearCart'])->name('cart.clear');
+
+
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
