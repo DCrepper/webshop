@@ -16,23 +16,48 @@ namespace App\Models{
  * App\Models\Cart
  *
  * @property int $id
- * @property int $user_id
- * @property int $product_id
- * @property int $quantity
+ * @property int|null $user_id
+ * @property string $session_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Product|null $product
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CartItem> $products
+ * @property-read int|null $products_count
+ * @property-read \App\Models\User|null $user
  * @method static \Illuminate\Database\Eloquent\Builder|Cart newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Cart newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Cart query()
  * @method static \Illuminate\Database\Eloquent\Builder|Cart whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Cart whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Cart whereProductId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Cart whereQuantity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Cart whereSessionId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Cart whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Cart whereUserId($value)
  */
 	class Cart extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\CartItem
+ *
+ * @property int $id
+ * @property int $product_id
+ * @property int $cart_id
+ * @property int $quantity
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Cart|null $cart
+ * @property-read \App\Models\Product|null $product
+ * @method static \Illuminate\Database\Eloquent\Builder|CartItem newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CartItem newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CartItem query()
+ * @method static \Illuminate\Database\Eloquent\Builder|CartItem whereCartId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CartItem whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CartItem whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CartItem whereProductId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CartItem whereQuantity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CartItem whereUpdatedAt($value)
+ */
+	class CartItem extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -60,6 +85,7 @@ namespace App\Models{
  * @property string $shipping_class
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Database\Factories\ProductFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Product newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Product newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Product query()
@@ -90,6 +116,29 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Session
+ *
+ * @property string $id
+ * @property int|null $user_id
+ * @property string|null $ip_address
+ * @property string|null $user_agent
+ * @property string $payload
+ * @property int $last_activity
+ * @method static \Illuminate\Database\Eloquent\Builder|Session newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Session newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Session query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Session whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Session whereIpAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Session whereLastActivity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Session wherePayload($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Session whereUserAgent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Session whereUserId($value)
+ */
+	class Session extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\User
  *
  * @property int $id
@@ -100,6 +149,7 @@ namespace App\Models{
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Cart|null $cart
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Sanctum\PersonalAccessToken> $tokens

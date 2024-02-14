@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Cart extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id', 'session_id'];
+    protected $fillable = ['id', 'user_id', 'session_id'];
 
     public function products()
     {
