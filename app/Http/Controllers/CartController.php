@@ -47,6 +47,24 @@ class CartController extends Controller
         }
         return redirect('cart');
     }
+public function removeProduct(Product $product)
+{
+    // Check if the user is authenticated
+    if (auth()->check()) {
+        // Logic for authenticated user (remove from the database)
+        $user = auth()->user();
+        Cart::where('user_id', $user->id)
+            ->where('product_id', $product->id)
+            ->delete();
+    } else {
+        // Logic for guest user (remove from the session)
+        $cart = session()->get('cart');
+        unset($cart[(string) $product->id]);
+        session(['cart' => $cart]);
+    }
+    return redirect('cart');
+}
+
     function clearCart()
     {
         if (auth()->check()) {

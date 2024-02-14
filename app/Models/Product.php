@@ -8,10 +8,11 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * Class Product
- * 
+ *
  * @property int $id
  * @property string $name
  * @property string $slug
@@ -38,26 +39,27 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Product extends Model
 {
-	protected $table = 'products';
+    use HasFactory;
+    protected $table = 'products';
 
-	protected $fillable = [
-		'name',
-		'slug',
-		'type',
-		'status',
-		'catalog_visibility',
-		'description',
-		'short_description',
-		'sku',
-		'price',
-		'regular_price',
-		'sale_price',
-		'stock_quantity',
-		'stock_status',
-		'weight',
-		'length',
-		'width',
-		'height',
-		'shipping_class'
-	];
+    protected $fillable = [
+        'name',
+        'slug',
+        'type',
+        'status',
+        'catalog_visibility',
+        'description',
+        'short_description',
+        'sku',
+        'price',
+        'regular_price',
+        'sale_price',
+        'stock_quantity',
+        'stock_status',
+        'weight',
+        'length',
+        'width',
+        'height',
+        'shipping_class'
+    ];
 }
