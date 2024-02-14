@@ -13,16 +13,21 @@ class GuestCartTest extends TestCase
     }
     public function testGuestAddProduct()
     {
-        // Create a product
+
         // acting as unauthenticated user
         $this->actingAsGuest();
         $this->assertGuest();
+        // Create a product
         $product = Product::factory(1)->create();
         $product = Product::whereId($product[0]->id)->first();
         // Add the product to the cart
         $response = $this->post(route('cart.add', ['product' => $product]));
-        $response->assertStatus(302);
-        $this->
+        $response->assertRedirectToRoute('cart.index');
+        $cart = collect(session()->get('cart'));
+        dd(session());
+        dd(session()->get('cart'));
+
+        $response->assertSessionHasNoErrors();
         // Assert that the product was successfully added
     }
     public function testGuestRemoveProduct()

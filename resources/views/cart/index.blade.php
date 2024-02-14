@@ -2,7 +2,7 @@
     <div class="container mx-auto px-6">
         <h3 class="text-2xl font-medium text-gray-700">Checkout</h3>
         <div class="mt-8 flex flex-col lg:flex-row">
-            @foreach ($cart as $object)
+            @foreach ($cart->products as $cartItem)
                 <div class="order-1 mb-8 w-full flex-shrink-0 lg:order-2 lg:mb-0 lg:w-1/2">
                     <div class="flex justify-center lg:justify-end">
                         <div class="w-full max-w-md rounded-md border px-4 py-3">
@@ -17,7 +17,7 @@
                                         alt="">
                                     <div class="mx-3">
 
-                                        <h3 class="text-sm text-gray-600"> {{ $object->product->name }}</h3>
+                                        <h3 class="text-sm text-gray-600"> {{ $cartItem->product->name }}</h3>
                                         <div class="mt-2 flex items-center">
                                             <button class="text-gray-500 focus:text-gray-600 focus:outline-none">
                                                 <svg class="h-5 w-5" fill="none" stroke-linecap="round"
@@ -28,7 +28,7 @@
                                                     </path>
                                                 </svg>
                                             </button>
-                                            <span class="mx-2 text-gray-700"> {{ $object->quantity }}</span>
+                                            <span class="mx-2 text-gray-700"> {{ $cartItem->quantity }}</span>
                                             <button class="text-gray-500 focus:text-gray-600 focus:outline-none">
                                                 <svg class="h-5 w-5" fill="none" stroke-linecap="round"
                                                     stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
@@ -39,7 +39,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <span class="text-gray-600"> {{ $object->product->price }}</span>
+                                <span class="text-gray-600"> {{ $cartItem->product->price }}</span>
                             </div>
                         </div>
                     </div>

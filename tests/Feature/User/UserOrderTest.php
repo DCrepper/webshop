@@ -4,12 +4,12 @@ namespace Tests\Feature\User;
 
 use Tests\TestCase;
 
-class GuestOrderTest extends TestCase
+class UserOrderTest extends TestCase
 {
     /**
      * A basic feature test example.
      */
-    public function testGuestCanOrder(): void
+    public function testUserCanOrder(): void
     {
         $response = $this->get('/');
 

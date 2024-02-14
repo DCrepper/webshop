@@ -5,7 +5,7 @@ namespace Tests\Feature\User;
 use App\Models\Product;
 use Tests\TestCase;
 
-class CartControllerTest extends TestCase
+class UserCartTest extends TestCase
 {
     public function testGuestAddProduct()
     {

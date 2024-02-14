@@ -6,37 +6,10 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
+use App\Models\Cart;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-/**
- * Class Product
- *
- * @property int $id
- * @property string $name
- * @property string $slug
- * @property string $type
- * @property string $status
- * @property string $catalog_visibility
- * @property string $description
- * @property string $short_description
- * @property string $sku
- * @property string $price
- * @property string $regular_price
- * @property string $sale_price
- * @property string $stock_quantity
- * @property string $stock_status
- * @property string $weight
- * @property string $length
- * @property string $width
- * @property string $height
- * @property string $shipping_class
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- *
- * @package App\Models
- */
 class Product extends Model
 {
     use HasFactory;

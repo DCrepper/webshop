@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Product;
 use App\Models\User;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -14,9 +13,8 @@ return new class extends Migration {
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class)->onDelete('cascade');
-            $table->foreignIdFor(Product::class)->onDelete('cascade');
-            $table->integer('quantity')->default(1);
+            $table->foreignIdFor(User::class)->nullable();
+            $table->string('session_id')->nullable(false)->index();
             $table->timestamps();
         });
     }
