@@ -13,7 +13,7 @@
                 <span class="mx-1 text-sm">NY</span>
             </div>
             <div class="w-full text-2xl font-semibold text-gray-700 md:text-center">
-                Brand
+                {{ __('Brand') }}
             </div>
             <div class="flex w-full items-center justify-end">
                 <button class="mx-4 text-gray-600 focus:outline-none sm:mx-0" @click="cartOpen = !cartOpen">
