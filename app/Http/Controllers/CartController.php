@@ -6,7 +6,6 @@ use App\Models\Cart;
 use App\Models\CartItem;
 use App\Models\Product;
 use App\Models\Session;
-use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
