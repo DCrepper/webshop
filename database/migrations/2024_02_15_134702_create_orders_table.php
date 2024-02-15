@@ -40,6 +40,10 @@ return new class extends Migration
             $table->string('shipping_state');
             $table->string('shipping_postcode');
             $table->string('shipping_country');
+            $table->string('shipping_lines_method_id');
+            $table->string('shipping_lines_method_title');
+            $table->string('shipping_lines_total');
+
 
             $table->timestamps();
         });
