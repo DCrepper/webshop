@@ -2,11 +2,10 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
-
-use Automattic\WooCommerce\Client;
 use App\Enums\WordpressEndpoints;
 use App\Models\Product;
+use Automattic\WooCommerce\Client;
+use Illuminate\Console\Command;
 
 /**
  * Class ProductsSync
@@ -17,10 +16,11 @@ class ProductsSync extends Command
 {
     /**
      * Helper
-     * @var \GuzzleHttp\Client $client
      *
+     * @var \GuzzleHttp\Client
      */
     public Client $client;
+
     /**
      * The name and signature of the console command.
      *
@@ -70,7 +70,7 @@ class ProductsSync extends Command
                 'length' => $product['dimensions']->length,
                 'width' => $product['dimensions']->width,
                 'height' => $product['dimensions']->height,
-                'shipping_class' => $product['shipping_class']
+                'shipping_class' => $product['shipping_class'],
             ];
             Product::updateOrCreate($pair);
         }

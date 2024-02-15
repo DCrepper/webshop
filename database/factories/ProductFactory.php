@@ -24,6 +24,7 @@ class ProductFactory extends Factory
     {
         $name = fake()->word;
         $slug = Str::slug($name);
+
         return [
             'name' => $name,
             'slug' => $slug,

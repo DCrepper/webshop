@@ -6,13 +6,13 @@
 
 namespace App\Models;
 
-use App\Models\Cart;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
     use HasFactory;
+
     protected $table = 'products';
 
     protected $fillable = [
@@ -33,6 +33,6 @@ class Product extends Model
         'length',
         'width',
         'height',
-        'shipping_class'
+        'shipping_class',
     ];
 }

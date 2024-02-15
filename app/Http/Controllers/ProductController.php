@@ -13,11 +13,8 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
+
         return view('products', compact('products'));
-    }
-    public function checkout()
-    {
-        return view('checkout');
     }
 
     /**

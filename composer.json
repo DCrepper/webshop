@@ -24,7 +24,7 @@
         "barryvdh/laravel-ide-helper": "^2.13",
         "fakerphp/faker": "^1.9.1",
         "laravel/breeze": "^1.21",
-        "laravel/pint": "^1.0",
+        "laravel/pint": "^1.13",
         "laravel/sail": "^1.18",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^7.0",
@@ -64,7 +64,8 @@
         "ide-helper": [
             "@php artisan ide-helper:generate",
             "@php artisan ide-helper:meta",
-            "@php artisan ide-helper:models -N --reset"
+            "@php artisan ide-helper:models -N --reset",
+            "./vendor/bin/pint"
         ]
     },
     "extra": {

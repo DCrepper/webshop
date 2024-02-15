@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Guest;
 
-use Tests\TestCase;
 use App\Models\Product;
+use Tests\TestCase;
 
 class GuestCartTest extends TestCase
 {
@@ -11,6 +11,7 @@ class GuestCartTest extends TestCase
     {
         $this->assertGuest();
     }
+
     public function testGuestAddProduct()
     {
 
@@ -30,6 +31,7 @@ class GuestCartTest extends TestCase
         $response->assertSessionHasNoErrors();
         // Assert that the product was successfully added
     }
+
     public function testGuestRemoveProduct()
     {
         // Create a product
@@ -47,6 +49,4 @@ class GuestCartTest extends TestCase
         // Assert that the product was successfully removed
 
     }
-
-
 }

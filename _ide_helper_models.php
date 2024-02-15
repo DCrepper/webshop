@@ -62,6 +62,30 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\CheckOut
+ *
+ * @method static \Database\Factories\CheckOutFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|CheckOut newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CheckOut newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CheckOut query()
+ */
+	class CheckOut extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Order
+ *
+ * @method static \Database\Factories\OrderFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|Order newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Order newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Order query()
+ */
+	class Order extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Product
  *
  * @property int $id

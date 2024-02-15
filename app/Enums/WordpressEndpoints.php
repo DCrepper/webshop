@@ -18,10 +18,16 @@ use BenSampo\Enum\Enum;
 final class WordpressEndpoints extends Enum
 {
     const POSTS = 'posts/';
+
     const MAEDIA = 'media/';
+
     const PAGES = 'pages/';
+
     const CATEGORY = 'category/';
+
     const PRODUCTS = 'products';
+
     const PRODUCTSCATEGORIES = 'products/categories';
+
     const PRODUCTSTAGS = 'products/tags';
 }

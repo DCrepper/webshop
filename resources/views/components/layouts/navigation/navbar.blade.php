@@ -43,7 +43,8 @@
                 <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="{{ route('products') }}"
                     wire:navigate>{{ __('Products') }}
                 </a>
-                <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="#">Categories</a>
+                <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="{{ route('cart.index') }}"
+                    wire:navigate>{{ __('Cart') }}</a>
                 <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="#">Contact</a>
                 <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="#">About</a>
             </div>

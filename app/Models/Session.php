@@ -17,13 +17,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $user_agent
  * @property string $payload
  * @property int $last_activity
- *
- * @package App\Models
  */
 class Session extends Model
 {
     protected $table = 'sessions';
+
     public $incrementing = false;
+
     public $timestamps = false;
 
     protected $fillable = [
@@ -31,6 +31,6 @@ class Session extends Model
         'ip_address',
         'user_agent',
         'payload',
-        'last_activity'
+        'last_activity',
     ];
 }

@@ -1,9 +1,8 @@
 <?php
 
-use App\Models\Product;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +15,6 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-
 Route::get('/products', [ProductController::class, 'index'])->name('products');
 Route::get('/checkout', [ProductController::class, 'checkout'])->name('checkout');
 
@@ -27,14 +25,10 @@ Route::name('cart.')->group(function () {
     Route::delete('/cart/remove/{product}', [CartController::class, 'removeProduct'])->name('remove');
 });
 
-Route::view('/', 'welcome');
-
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::view('/', 'index');
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
