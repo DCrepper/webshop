@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
-use Illuminate\Http\Request;
 
 class CheckOutController extends Controller
 {
@@ -11,16 +10,22 @@ class CheckOutController extends Controller
 
     public function index()
     {
-        return view('checkout.index');
+        $this->createCart();
+
+        return view('checkout.index', ['cart' => $this->cart]);
     }
 
-    public function store(Request $request)
+    /**
+     * Creates a new or exist cart.
+     */
+    private function createCart(): void
     {
-        $this->createCart();
-        $this->cart->update([
-            'status' => 'paid',
-        ]);
-
-        return redirect()->route('checkout.index');
+        if (auth()->check()) {
+            $user = auth()->user();
+            $this->cart = Cart::with('products.product')->firstOrCreate(['user_id', $user->id])->first();
+        } else {
+            $user_id = session()->getId();
+            $this->cart = Cart::with('products.product')->firstOrCreate(['session_id' => $user_id]);
+        }
     }
 }

@@ -44,7 +44,6 @@ return new class extends Migration
             $table->string('shipping_lines_method_title');
             $table->string('shipping_lines_total');
 
-
             $table->timestamps();
         });
     }

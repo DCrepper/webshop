@@ -65,7 +65,8 @@
             "@php artisan ide-helper:generate",
             "@php artisan ide-helper:meta",
             "@php artisan ide-helper:models -N --reset",
-            "./vendor/bin/pint"
+            "./vendor/bin/pint",
+            "php artisan sync:products"
         ]
     },
     "extra": {

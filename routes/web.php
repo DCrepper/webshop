@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckOutController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,7 +18,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/products', [ProductController::class, 'index'])->name('products');
-Route::get('/checkout', [ProductController::class, 'checkout'])->name('checkout');
 
 Route::name('cart.')->group(function () {
     Route::get('/cart', [CartController::class, 'index'])->name('index');
@@ -25,6 +26,12 @@ Route::name('cart.')->group(function () {
     Route::delete('/cart/remove/{product}', [CartController::class, 'removeProduct'])->name('remove');
 });
 
+Route::name('order.')->group(function () {
+    Route::get('/order', [OrderController::class, 'index'])->name('index');
+});
+Route::name('checkout.')->group(function () {
+    Route::get('/checkout', [CheckOutController::class, 'index'])->name('index');
+});
 Route::view('/', 'index');
 
 Route::view('profile', 'profile')

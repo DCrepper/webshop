@@ -53,5 +53,8 @@
                 </div>
             @endforeach
         </div>
+        <a href="{{ route('checkout.index') }}" wire:navigate>
+            <button class="mt-8 w-full bg-gray-900 py-3 text-lg uppercase text-white">Checkout</button>
+        </a>
     </div>
 </x-layouts.app>
