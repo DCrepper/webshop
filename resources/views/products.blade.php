@@ -23,7 +23,7 @@
                     </div>
                     <div class="px-5 py-3">
                         <h3 class="uppercase text-gray-700">{{ $product->name }}</h3>
-                        <span class="mt-2 text-gray-500">{{ $product->price }} Ft.</span>
+                        <span class="mt-2 text-gray-500">{{ $product->regular_price }} Ft.</span>
                     </div>
                 </div>
             @endforeach

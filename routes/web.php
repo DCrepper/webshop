@@ -28,7 +28,13 @@ Route::name('cart.')->group(function () {
 
 Route::name('order.')->group(function () {
     Route::get('/order', [OrderController::class, 'index'])->name('index');
+    Route::post('/store', [OrderController::class, 'store'])->name('store');
+    Route::get('/list', [OrderController::class, 'myOrders'])->name('myOrders');
+
 });
+
+Route::get('order/show/{order}', [OrderController::class, 'show'])->name('show');
+
 Route::name('checkout.')->group(function () {
     Route::get('/checkout', [CheckOutController::class, 'index'])->name('index');
 });

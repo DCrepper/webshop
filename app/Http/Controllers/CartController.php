@@ -13,14 +13,14 @@ class CartController extends Controller
 
     public function index()
     {
-        $this->createCart();
+        $this->cart = CartController::createCart();
 
         return view('cart.index', ['cart' => $this->cart]);
     }
 
     public function addProduct(Product $product)
     {
-        $this->createCart();
+        $this->cart = CartController::createCart();
         if (
             $this->getCartItems()->contains(function ($value, $key) use ($product) {
                 return $value->product_id == $product->id;
@@ -42,7 +42,7 @@ class CartController extends Controller
 
     public function removeProduct(Product $product)
     {
-        $this->createCart();
+        $this->cart = CartController::createCart();
         CartItem::where('product_id', $product->id)->where('cart_id', $this->cart->id)->first()->delete();
 
         return redirect()->route(route: 'cart.index');
@@ -50,24 +50,22 @@ class CartController extends Controller
 
     public function clearCart()
     {
-        $this->createCart();
+        $this->cart = CartController::createCart();
 
         return redirect()->route('cart.index');
     }
 
-    private function getCartItems(): Collection
+    public static function getCartItems(): Collection
     {
-        $this->createCart();
+        $cart = CartController::createCart();
 
-        return $this->cart->products;
+        return $cart->products;
     }
 
-    public function getCartTotal()
+    public static function getCartTotal()
     {
-        $this->createCart();
-
-        return $this->getCartItems()->sum(function ($cartItem) {
-            return $cartItem->product->price * $cartItem->quantity;
+        return CartController::getCartItems()->sum(function ($cartItem) {
+            return $cartItem->product->regular_price * $cartItem->quantity;
         });
     }
 
@@ -78,14 +76,14 @@ class CartController extends Controller
      */
     public function getCartCount(): int
     {
-        $this->createCart();
+        $this->cart = CartController::createCart();
 
         return $this->getCartItems()->count();
     }
 
     public function checkout()
     {
-        $this->createCart();
+        $this->cart = CartController::createCart();
         $cart = $this->getCart();
         $cart->update(['checked_out' => true]);
 
@@ -94,7 +92,7 @@ class CartController extends Controller
 
     public function updateQuantity(Product $product, int $quantity)
     {
-        $this->createCart();
+        $this->cart = CartController::createCart();
         if ($quantity < 1) {
             return redirect()->route('cart.index')->with('error', __('Quantity cannot be less than 1'));
         }
@@ -106,14 +104,17 @@ class CartController extends Controller
     /**
      * Creates a new or exist cart.
      */
-    private function createCart(): void
+    public static function createCart(): Cart
     {
+        $cart = null;
         if (auth()->check()) {
             $user = auth()->user();
-            $this->cart = Cart::with('products.product')->firstOrCreate(['user_id', $user->id])->first();
+            $cart = Cart::with('products.product')->firstOrCreate(['user_id', $user->id])->first();
         } else {
             $user_id = session()->getId();
-            $this->cart = Cart::with('products.product')->firstOrCreate(['session_id' => $user_id]);
+            $cart = Cart::with('products.product')->firstOrCreate(['session_id' => $user_id]);
         }
+
+        return $cart;
     }
 }

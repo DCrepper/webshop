@@ -16,8 +16,6 @@ class ProductsSync extends Command
 {
     /**
      * Helper
-     *
-     * @var \GuzzleHttp\Client
      */
     public Client $client;
 
@@ -40,6 +38,7 @@ class ProductsSync extends Command
      */
     public function handle()
     {
+        $this->info('Syncing products...');
         $this->client = new Client(
             config('app.wordpress_wc_baseurl'),
             config('app.woocommerce_api_key'),
@@ -53,6 +52,8 @@ class ProductsSync extends Command
             $product = (array) $product;
             //dd($product);
             $pair = [
+                'id' => $product['id'],
+                'product_id' => $product['id'],
                 'name' => $product['name'],
                 'slug' => $product['slug'],
                 'type' => $product['type'],

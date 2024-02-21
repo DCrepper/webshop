@@ -46,7 +46,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <span class="text-gray-600"> {{ $cartItem->product->price }}</span>
+                                <span class="text-gray-600"> {{ $cartItem->product->regular_price }}</span>
                             </div>
                         </div>
                     </div>

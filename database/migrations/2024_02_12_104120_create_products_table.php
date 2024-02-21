@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->text('product_id');
             $table->text('name');
             $table->text('slug');
             $table->text('type');
@@ -20,7 +21,7 @@ return new class extends Migration
             $table->text('catalog_visibility');
             $table->text('description');
             $table->text('short_description');
-            $table->string('sku')->nullable(false)->unique();
+            $table->string('sku')->nullable(false);
             $table->text('price');
             $table->text('regular_price');
             $table->text('sale_price');

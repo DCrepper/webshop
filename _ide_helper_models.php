@@ -83,74 +83,73 @@ namespace App\Models{
  * App\Models\Order
  *
  * @property int $id
- * @property int $cart_id
  * @property string $payment_method
- * @property string $status
- * @property string $address_1
- * @property string $address_2
- * @property string $city
- * @property string $postcode
- * @property string $country
- * @property string $phone
- * @property string $email
- * @property string $first_name
- * @property string $last_name
- * @property string $total
- * @property string $currency
- * @property string $transaction_id
- * @property string $payment_status
- * @property string $payment_details
- * @property string $shipping_method
- * @property string $shipping_cost
- * @property string $shipping_details
- * @property string $shipping_tracking_number
+ * @property string $payment_method_title
+ * @property bool $set_paid
+ * @property string $billing_first_name
+ * @property string $billing_last_name
+ * @property string $billing_address_1
+ * @property string $billing_address_2
+ * @property string $billing_city
+ * @property string $billing_state
+ * @property string $billing_postcode
+ * @property string $billing_country
+ * @property string $billing_email
+ * @property string $billing_phone
+ * @property string $shipping_first_name
+ * @property string $shipping_last_name
  * @property string $shipping_address_1
  * @property string $shipping_address_2
  * @property string $shipping_city
  * @property string $shipping_state
  * @property string $shipping_postcode
  * @property string $shipping_country
+ * @property string $shipping_tracking_number
  * @property string $shipping_lines_method_id
  * @property string $shipping_lines_method_title
  * @property string $shipping_lines_total
+ * @property string|null $order_id
+ * @property string|null $order_key
+ * @property string $order_status
+ * @property string $order_currency
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Cart $cart
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\OrderItem> $order_items
+ * @property-read int|null $order_items_count
  * @method static \Illuminate\Database\Eloquent\Builder|Order newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Order newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Order query()
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereAddress1($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereAddress2($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereCartId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereCity($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereCountry($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereBillingAddress1($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereBillingAddress2($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereBillingCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereBillingCountry($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereBillingEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereBillingFirstName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereBillingLastName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereBillingPhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereBillingPostcode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereBillingState($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereCurrency($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereFirstName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereLastName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order wherePaymentDetails($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereOrderCurrency($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereOrderId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereOrderKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereOrderStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order wherePaymentMethod($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order wherePaymentStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order wherePhone($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order wherePostcode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order wherePaymentMethodTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereSetPaid($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereShippingAddress1($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereShippingAddress2($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereShippingCity($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereShippingCost($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereShippingCountry($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereShippingDetails($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereShippingFirstName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereShippingLastName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereShippingLinesMethodId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereShippingLinesMethodTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereShippingLinesTotal($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereShippingMethod($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereShippingPostcode($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereShippingState($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereShippingTrackingNumber($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereTotal($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereTransactionId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereUpdatedAt($value)
  */
 	class Order extends \Eloquent {}
@@ -158,9 +157,45 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\OrderItem
+ *
+ * @property int $id
+ * @property int $order_id
+ * @property int $product_id
+ * @property string $tax_class
+ * @property string $subtotal
+ * @property string $subtotal_tax
+ * @property string $total
+ * @property string $total_tax
+ * @property int $quantity
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Order|null $order
+ * @property-read \App\Models\Product|null $product
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem query()
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereOrderId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereProductId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereQuantity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereSubtotal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereSubtotalTax($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereTaxClass($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereTotal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereTotalTax($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderItem whereUpdatedAt($value)
+ */
+	class OrderItem extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Product
  *
  * @property int $id
+ * @property string $product_id
  * @property string $name
  * @property string $slug
  * @property string $type
@@ -193,6 +228,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereLength($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereProductId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereRegularPrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereSalePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereShippingClass($value)

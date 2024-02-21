@@ -13,37 +13,40 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('cart_id')->constrained();
-            $table->string('payment_method');
-            $table->string('status');
-            $table->string('address_1');
-            $table->string('address_2');
-            $table->string('city');
-            $table->string('postcode');
-            $table->string('country');
-            $table->string('phone');
-            $table->string('email');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('total');
-            $table->string('currency');
-            $table->string('transaction_id');
-            $table->string('payment_status');
-            $table->string('payment_details');
-            $table->string('shipping_method');
-            $table->string('shipping_cost');
-            $table->string('shipping_details');
-            $table->string('shipping_tracking_number');
+            $table->string('payment_method')->default('bacs');
+            $table->string('payment_method_title')->default('Bank Transfer');
+            $table->boolean('set_paid')->default(false);
+
+            $table->string('billing_first_name');
+            $table->string('billing_last_name');
+            $table->string('billing_address_1');
+            $table->string('billing_address_2');
+            $table->string('billing_city');
+            $table->string('billing_state');
+            $table->string('billing_postcode');
+            $table->string('billing_country');
+            $table->string('billing_email');
+            $table->string('billing_phone');
+
+            $table->string('shipping_first_name');
+            $table->string('shipping_last_name');
             $table->string('shipping_address_1');
             $table->string('shipping_address_2');
             $table->string('shipping_city');
             $table->string('shipping_state');
             $table->string('shipping_postcode');
             $table->string('shipping_country');
-            $table->string('shipping_lines_method_id');
-            $table->string('shipping_lines_method_title');
-            $table->string('shipping_lines_total');
 
+            $table->string('shipping_tracking_number')->default('null');
+
+            $table->string('shipping_lines_method_id')->default('flat_rate');
+            $table->string('shipping_lines_method_title')->default('Flat Rate');
+            $table->string('shipping_lines_total')->default('0');
+
+            $table->string('order_id')->nullable();
+            $table->string('order_key')->nullable();
+            $table->string('order_status')->default('pending');
+            $table->string('order_currency')->default(config('webshop.default_currency'));
             $table->timestamps();
         });
     }

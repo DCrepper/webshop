@@ -3,4 +3,4 @@ import '../css/app.css';
 import.meta.glob([
     '../img/**',
 ]);
-Alpine.start();
+import 'flowbite';
