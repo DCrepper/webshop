@@ -13,25 +13,25 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->text('product_id');
-            $table->text('name');
-            $table->text('slug');
-            $table->text('type');
-            $table->text('status');
-            $table->text('catalog_visibility');
-            $table->text('description');
-            $table->text('short_description');
-            $table->string('sku')->nullable(false);
-            $table->text('price');
-            $table->text('regular_price');
-            $table->text('sale_price');
-            $table->text('stock_quantity');
-            $table->text('stock_status');
-            $table->text('weight');
-            $table->text('length');
-            $table->text('width');
-            $table->text('height');
-            $table->text('shipping_class');
+            $table->text('product_id')->nullable();
+            $table->text('name')->nullable();
+            $table->text('slug')->nullable();
+            $table->text('type')->nullable();
+            $table->text('status')->nullable();
+            $table->text('catalog_visibility')->nullable();
+            $table->text('description')->nullable();
+            $table->text('short_description')->nullable();
+            $table->string('sku')->nullable(false)->default(now()->toDateTimeString());
+            $table->text('price')->nullable();
+            $table->text('regular_price')->nullable();
+            $table->text('sale_price')->nullable();
+            $table->text('stock_quantity')->nullable();
+            $table->text('stock_status')->nullable();
+            $table->text('weight')->nullable();
+            $table->text('length')->nullable();
+            $table->text('width')->nullable();
+            $table->text('height')->nullable();
+            $table->text('shipping_class')->nullable();
             $table->timestamps();
         });
     }

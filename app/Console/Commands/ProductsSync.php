@@ -49,31 +49,31 @@ class ProductsSync extends Command
         );
         $products = $this->client->get(WordpressEndpoints::PRODUCTS);
         foreach ($products as $product) {
-            $product = (array) $product;
+            $product_tmp = (array) $product;
+            $product = Product::where('id', $product_tmp['id'])->firstOrCreate();
             //dd($product);
-            $pair = [
-                'id' => $product['id'],
-                'product_id' => $product['id'],
-                'name' => $product['name'],
-                'slug' => $product['slug'],
-                'type' => $product['type'],
+            $product->update([
+                'id' => $product_tmp['id'],
+                'product_id' => $product_tmp['id'],
+                'name' => $product_tmp['name'],
+                'slug' => $product_tmp['slug'],
+                'type' => $product_tmp['type'],
                 'status' => $product['status'],
-                'catalog_visibility' => $product['catalog_visibility'],
-                'description' => $product['description'],
-                'short_description' => $product['short_description'],
-                'sku' => $product['sku'],
-                'price' => $product['price'],
-                'regular_price' => $product['regular_price'],
-                'sale_price' => $product['sale_price'],
-                'stock_quantity' => $product['stock_quantity'],
-                'stock_status' => $product['stock_status'],
-                'weight' => $product['weight'],
-                'length' => $product['dimensions']->length,
-                'width' => $product['dimensions']->width,
-                'height' => $product['dimensions']->height,
-                'shipping_class' => $product['shipping_class'],
-            ];
-            Product::updateOrCreate($pair);
+                'catalog_visibility' => $product_tmp['catalog_visibility'],
+                'description' => $product_tmp['description'],
+                'short_description' => $product_tmp['short_description'],
+                'sku' => $product_tmp['sku'],
+                'price' => $product_tmp['price'],
+                'regular_price' => $product_tmp['regular_price'],
+                'sale_price' => $product_tmp['sale_price'],
+                'stock_quantity' => $product_tmp['stock_quantity'],
+                'stock_status' => $product_tmp['stock_status'],
+                'weight' => $product_tmp['weight'],
+                'length' => $product_tmp['dimensions']->length,
+                'width' => $product_tmp['dimensions']->width,
+                'height' => $product_tmp['dimensions']->height,
+                'shipping_class' => $product_tmp['shipping_class'],
+            ]);
         }
     }
 }
