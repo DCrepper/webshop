@@ -30,7 +30,7 @@ Route::name('order.')->group(function () {
     Route::get('/order', [OrderController::class, 'index'])->name('index');
     Route::post('/store', [OrderController::class, 'store'])->name('store');
     Route::get('/list', [OrderController::class, 'myOrders'])->name('myOrders');
-
+    Route::post('/order/{order}', [OrderController::class, 'update'])->name('update');
 });
 
 Route::get('order/show/{order}', [OrderController::class, 'show'])->name('show');

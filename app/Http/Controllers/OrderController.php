@@ -10,6 +10,7 @@ use App\Models\OrderItem;
 use Automattic\WooCommerce\Client;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Request;
 
 class OrderController extends Controller
 {
@@ -30,41 +31,15 @@ class OrderController extends Controller
         return view('orders.index', compact('orders'));
     }
 
-    /*
-     * 'cart_id',
-        'payment_method',
-        'payment_method_title',
-        'set_paid',
-        'billing_first_name',
-        'billing_last_name',
-        'billing_address_1',
-        'billing_address_2',
-        'billing_city',
-        'billing_state',
-        'billing_postcode',
-        'billing_country',
-        'billing_email',
-        'billing_phone',
-        'shipping_first_name',
-        'shipping_last_name',
-        'shipping_address_1',
-        'shipping_address_2',
-        'shipping_city',
-        'shipping_state',
-        'shipping_postcode',
-        'shipping_country',
-        'shipping_method',
-        'shipping_cost',
-        'shipping_details',
-        'shipping_tracking_number',
-        'shipping_lines_method_id',
-        'shipping_lines_method_title',
-        'shipping_lines_total',
-        'order_id',
-        'order_key',
-        'order_status',
-        'order_currency',
-     */
+    public function update(Request $request, Order $order)
+    {
+        Log::debug('info', $request->all());
+        $order = Order::find($order->id);
+        $order->update($request->all());
+
+        return redirect()->route('order.show', ['order' => $order->id]);
+    }
+
     public function store(OrderCreateRequest $request)
     {
         //validation
@@ -190,7 +165,7 @@ class OrderController extends Controller
         return redirect()->route('order.show', ['order_id' => $created_order->id])->with('success', 'Order created successfully');
     }
 
-    public function myOrders()
+    public function myOrders(Request $request)
     {
         //$orders = auth()->user()->orders;
 
