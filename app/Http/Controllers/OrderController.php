@@ -33,12 +33,12 @@ class OrderController extends Controller
 
     public function update(Request $request)
     {
-        Log::debug('info', $request);
+        //Log::debug('info', $request);
         //$order = Order::find($order->id);
         //$order->update($request->all());
 
         //return redirect()->route('order.show', ['order' => $order->id]);
-        return response()->json(['success' => 'Order updated successfully']);
+        return response('');
     }
 
     public function store(OrderCreateRequest $request)
