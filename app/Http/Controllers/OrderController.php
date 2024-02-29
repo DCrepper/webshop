@@ -33,8 +33,7 @@ class OrderController extends Controller
 
     public function update(Request $request)
     {
-        $request = Request::all();
-        $order = Order::find($request['id'])->firstOrCreate(['id' => $request['id']]);
+        $order = Order::firstOrCreate(['id' => $request->id]);
 
         //Log::debug('info', $request);
         //$order = Order::find($order->id);
