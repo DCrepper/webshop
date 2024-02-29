@@ -34,7 +34,13 @@ class OrderController extends Controller
     public function update(Request $request)
     {
         $request = json_decode(request()->getContent(), true);
-        $order = Order::firstOrCreate(['id' => $request['id']]);
+        $order = Order::firstOrCreate(['order_id' => $request['id']]);
+        $order->update(
+            [
+                'order_id' => $request['id'],
+                'order_status' => $request['status'],
+            ]
+        );
 
         //Log::debug('info', $request);
         //$order = Order::find($order->id);
