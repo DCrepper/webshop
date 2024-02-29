@@ -33,7 +33,7 @@ class OrderController extends Controller
 
     public function update(Request $request)
     {
-        Log::debug('info', $request->all());
+        Log::debug('info', $request);
         //$order = Order::find($order->id);
         //$order->update($request->all());
 
