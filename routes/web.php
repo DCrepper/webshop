@@ -19,15 +19,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/products', [ProductController::class, 'index'])->name('products');
 
-Route::name('cart.')->group(function () {
+Route::prefix('cart')->as('cart.')->group(function () {
     Route::get('/cart', [CartController::class, 'index'])->name('index');
     Route::post('/cart/add/{product}', [CartController::class, 'addProduct'])->name('add');
     Route::get('/cart/clear', [CartController::class, 'clearCart'])->name('clear');
     Route::delete('/cart/remove/{product}', [CartController::class, 'removeProduct'])->name('remove');
 });
 
-Route::name('order.')->group(function () {
-    Route::get('/order', [OrderController::class, 'index'])->name('index');
+Route::prefix('order')->as('order.')->group(function () {
+    Route::get('/', [OrderController::class, 'index'])->name('index');
     Route::post('/store', [OrderController::class, 'store'])->name('store');
     Route::get('/list', [OrderController::class, 'myOrders'])->name('myOrders');
     Route::post('/update', [OrderController::class, 'update'])->name('update');
@@ -35,7 +35,7 @@ Route::name('order.')->group(function () {
 
 Route::get('order/show/{order}', [OrderController::class, 'show'])->name('show');
 
-Route::name('checkout.')->group(function () {
+Route::prefix('checkout')->as('checkout.')->group(function () {
     Route::get('/checkout', [CheckOutController::class, 'index'])->name('index');
 });
 Route::view('/', 'index');
