@@ -195,25 +195,25 @@ namespace App\Models{
  * App\Models\Product
  *
  * @property int $id
- * @property string $product_id
- * @property string $name
- * @property string $slug
- * @property string $type
- * @property string $status
- * @property string $catalog_visibility
- * @property string $description
- * @property string $short_description
+ * @property string|null $product_id
+ * @property string|null $name
+ * @property string|null $slug
+ * @property string|null $type
+ * @property string|null $status
+ * @property string|null $catalog_visibility
+ * @property string|null $description
+ * @property string|null $short_description
  * @property string $sku
- * @property string $price
- * @property string $regular_price
- * @property string $sale_price
- * @property string $stock_quantity
- * @property string $stock_status
- * @property string $weight
- * @property string $length
- * @property string $width
- * @property string $height
- * @property string $shipping_class
+ * @property string|null $price
+ * @property string|null $regular_price
+ * @property string|null $sale_price
+ * @property string|null $stock_quantity
+ * @property string|null $stock_status
+ * @property string|null $weight
+ * @property string|null $length
+ * @property string|null $width
+ * @property string|null $height
+ * @property string|null $shipping_class
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Database\Factories\ProductFactory factory($count = null, $state = [])

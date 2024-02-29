@@ -36,4 +36,9 @@ class Product extends Model
         'height',
         'shipping_class',
     ];
+
+    public function categories()
+    {
+        return $this->belongsToMany(WoocommerceProductCategory::class);
+    }
 }
