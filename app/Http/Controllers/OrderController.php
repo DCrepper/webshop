@@ -31,13 +31,13 @@ class OrderController extends Controller
         return view('orders.index', compact('orders'));
     }
 
-    public function update(Request $request, Order $order)
+    public function update(Request $request): void
     {
         Log::debug('info', $request->all());
-        $order = Order::find($order->id);
-        $order->update($request->all());
+        //$order = Order::find($order->id);
+        //$order->update($request->all());
 
-        return redirect()->route('order.show', ['order' => $order->id]);
+        //return redirect()->route('order.show', ['order' => $order->id]);
     }
 
     public function store(OrderCreateRequest $request)
