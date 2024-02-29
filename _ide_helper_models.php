@@ -216,6 +216,8 @@ namespace App\Models{
  * @property string|null $shipping_class
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\WoocommerceProductCategory> $categories
+ * @property-read int|null $categories_count
  * @method static \Database\Factories\ProductFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Product newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Product newQuery()
@@ -302,5 +304,35 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  */
 	class User extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\WoocommerceProductCategory
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property int|null $parent
+ * @property string|null $description
+ * @property string $display
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
+ * @property-read int|null $products_count
+ * @method static \Database\Factories\WoocommerceProductCategoryFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|WoocommerceProductCategory newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|WoocommerceProductCategory newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|WoocommerceProductCategory query()
+ * @method static \Illuminate\Database\Eloquent\Builder|WoocommerceProductCategory whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WoocommerceProductCategory whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WoocommerceProductCategory whereDisplay($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WoocommerceProductCategory whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WoocommerceProductCategory whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WoocommerceProductCategory whereParent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WoocommerceProductCategory whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WoocommerceProductCategory whereUpdatedAt($value)
+ */
+	class WoocommerceProductCategory extends \Eloquent {}
 }
 
