@@ -17,25 +17,25 @@ return new class extends Migration
             $table->string('payment_method_title')->default('Bank Transfer');
             $table->boolean('set_paid')->default(false);
 
-            $table->string('billing_first_name');
-            $table->string('billing_last_name');
-            $table->string('billing_address_1');
-            $table->string('billing_address_2');
-            $table->string('billing_city');
-            $table->string('billing_state');
-            $table->string('billing_postcode');
-            $table->string('billing_country');
-            $table->string('billing_email');
-            $table->string('billing_phone');
+            $table->string('billing_first_name')->nullable();
+            $table->string('billing_last_name')->nullable();
+            $table->string('billing_address_1')->nullable();
+            $table->string('billing_address_2')->nullable();
+            $table->string('billing_city')->nullable();
+            $table->string('billing_state')->nullable();
+            $table->string('billing_postcode')->nullable();
+            $table->string('billing_country')->nullable();
+            $table->string('billing_email')->nullable();
+            $table->string('billing_phone')->nullable();
 
-            $table->string('shipping_first_name');
-            $table->string('shipping_last_name');
-            $table->string('shipping_address_1');
-            $table->string('shipping_address_2');
-            $table->string('shipping_city');
-            $table->string('shipping_state');
-            $table->string('shipping_postcode');
-            $table->string('shipping_country');
+            $table->string('shipping_first_name')->nullable();
+            $table->string('shipping_last_name')->nullable();
+            $table->string('shipping_address_1')->nullable();
+            $table->string('shipping_address_2')->nullable();
+            $table->string('shipping_city')->nullable();
+            $table->string('shipping_state')->nullable();
+            $table->string('shipping_postcode')->nullable();
+            $table->string('shipping_country')->nullable();
 
             $table->string('shipping_tracking_number')->default('null');
 
