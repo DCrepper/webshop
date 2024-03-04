@@ -2,12 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\CheckOut>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Cart>
  */
-class CheckOutFactory extends Factory
+class CartFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +18,8 @@ class CheckOutFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'user_id' => User::factory(),
+            'session_id' => fake()->uuid(),
         ];
     }
 }

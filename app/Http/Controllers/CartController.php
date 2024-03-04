@@ -20,19 +20,19 @@ class CartController extends Controller
 
     public function addProduct(Product $product)
     {
-        $this->cart = CartController::createCart();
+        $cart = CartController::createCart();
         if (
             $this->getCartItems()->contains(function ($value, $key) use ($product) {
                 return $value->product_id == $product->id;
             })
         ) {
-            CartItem::where('product_id', $product->id)->where('cart_id', $this->cart->id)->first()->increment('quantity');
+            CartItem::where('product_id', $product->id)->where('cart_id', $cart->id)->first()->increment('quantity');
 
             return redirect()->route('cart.index');
         }
 
         CartItem::create([
-            'cart_id' => $this->cart->id,
+            'cart_id' => $cart->id,
             'product_id' => $product->id,
             'quantity' => 1,
         ]);
@@ -42,15 +42,8 @@ class CartController extends Controller
 
     public function removeProduct(Product $product)
     {
-        $this->cart = CartController::createCart();
-        CartItem::where('product_id', $product->id)->where('cart_id', $this->cart->id)->first()->delete();
-
-        return redirect()->route(route: 'cart.index');
-    }
-
-    public function clearCart()
-    {
-        $this->cart = CartController::createCart();
+        $cart = CartController::createCart();
+        CartItem::where('product_id', $product->id)->where('cart_id', $cart->id)->first()->delete();
 
         return redirect()->route('cart.index');
     }
@@ -76,17 +69,13 @@ class CartController extends Controller
      */
     public function getCartCount(): int
     {
-        $this->cart = CartController::createCart();
+        $cart = CartController::createCart();
 
         return $this->getCartItems()->count();
     }
 
     public function checkout()
     {
-        $this->cart = CartController::createCart();
-        $cart = $this->getCart();
-        $cart->update(['checked_out' => true]);
-
         return redirect()->route('cart.index');
     }
 
@@ -112,9 +101,21 @@ class CartController extends Controller
             $cart = Cart::with('products.product')->firstOrCreate(['user_id', $user->id])->first();
         } else {
             $user_id = session()->getId();
-            $cart = Cart::with('products.product')->firstOrCreate(['session_id' => $user_id]);
+            $cart = Cart::with('products.product')->firstOrCreate(['session_id' => $user_id])->first();
         }
 
         return $cart;
+    }
+
+    public static function clearCartItems()
+    {
+        $cart = CartController::createCart();
+        if (! is_null($cart)) {
+            $cart->products()->delete();
+
+            return true;
+        }
+
+        return false;
     }
 }

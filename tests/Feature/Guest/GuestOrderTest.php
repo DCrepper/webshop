@@ -2,17 +2,23 @@
 
 namespace Tests\Feature\Guest;
 
+use App\Http\Controllers\CartController;
 use Tests\TestCase;
 
 class GuestOrderTest extends TestCase
 {
     /**
-     * A basic feature test example.
+     * User Order form page
      */
-    public function testGuestCanOrder(): void
-    {
-        $response = $this->get('/');
 
-        $response->assertStatus(200);
+    /**
+     * Test case to verify that a guest user can place an order.
+     */
+    public function testGuestUserCanPlaceOrder(): void
+    {
+        $this->actingAsGuest();
+        $this->get(route('checkout.index'))->assertStatus(200);
+        $cart = CartController::createCart();
+        $this->view('checkout.index', compact('cart'))->assertSee('Checkout');
     }
 }

@@ -16,29 +16,32 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/products', [ProductController::class, 'index'])->name('products');
-
+Route::prefix('product')->as('product.')->group(function () {
+    Route::get('/', [ProductController::class, 'index'])->name('index');
+});
 Route::prefix('cart')->as('cart.')->group(function () {
-    Route::get('/cart', [CartController::class, 'index'])->name('index');
-    Route::post('/cart/add/{product}', [CartController::class, 'addProduct'])->name('add');
-    Route::get('/cart/clear', [CartController::class, 'clearCart'])->name('clear');
-    Route::delete('/cart/remove/{product}', [CartController::class, 'removeProduct'])->name('remove');
+    Route::get('/', [CartController::class, 'index'])->name('index');
+    Route::post('/add/{product}', [CartController::class, 'addProduct'])->name('add');
+    Route::get('/clear', [CartController::class, 'clearCartItems'])->name('clear');
+    Route::delete('/remove/{product}', [CartController::class, 'removeProduct'])->name('remove');
 });
 
 Route::prefix('order')->as('order.')->group(function () {
     Route::get('/', [OrderController::class, 'index'])->name('index');
     Route::post('/store', [OrderController::class, 'store'])->name('store');
-    Route::get('/list', [OrderController::class, 'myOrders'])->name('myOrders');
-    Route::post('/update', [OrderController::class, 'update'])->name('update');
+    Route::middleware('auth')->group(function () {
+        Route::get('/my-orders', [OrderController::class, 'myOrders'])->name('myOrders');
+    });
+    //Route::post('/update', [OrderController::class, 'update'])->name('update');
+    Route::get('/thank-you', [OrderController::class, 'thankYou'])->name('thank-you');
 });
 
 Route::get('order/show/{order}', [OrderController::class, 'show'])->name('show');
 
 Route::prefix('checkout')->as('checkout.')->group(function () {
-    Route::get('/checkout', [CheckOutController::class, 'index'])->name('index');
+    Route::get('/', [CheckOutController::class, 'index'])->name('index');
 });
-Route::view('/', 'index');
+Route::view('/', 'index')->name('index');
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])

@@ -3,24 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\OrderCreateRequest;
-use App\Models\Cart;
-use App\Models\CartItem;
 use App\Models\Order;
 use App\Models\OrderItem;
 use Automattic\WooCommerce\Client;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
-use Request;
 
 class OrderController extends Controller
 {
-    public Cart $cart;
-
-    /**
-     * Helper
-     */
-    public Client $client;
-
     public function index()
     {
         if (! auth()->user()) {
@@ -31,7 +23,7 @@ class OrderController extends Controller
         return view('orders.index', compact('orders'));
     }
 
-    public function update(Request $request)
+    public function update(Request $request): Response
     {
         $request = json_decode(request()->getContent(), true);
         $order = Order::firstOrCreate(['order_id' => $request['id']]);
@@ -42,11 +34,6 @@ class OrderController extends Controller
             ]
         );
 
-        //Log::debug('info', $request);
-        //$order = Order::find($order->id);
-        //$order->update($request->all());
-
-        //return redirect()->route('order.show', ['order' => $order->id]);
         return response('');
     }
 
@@ -54,7 +41,7 @@ class OrderController extends Controller
     {
         //validation
         $validated = $request->validated();
-        $this->client = new Client(
+        $client = new Client(
             config('app.wordpress_wc_baseurl'),
             config('app.woocommerce_api_key'),
             config('app.woocommerce_api_secret_key'),
@@ -63,7 +50,9 @@ class OrderController extends Controller
             ]
         );
 
-        $this->cart = CartController::createCart();
+        $cart = CartController::createCart();
+        $user_id = auth()->user()->id;
+
         $cartItems = CartController::getCartItems()->map(function ($item) {
             return [
                 'product_id' => $item->product_id,
@@ -109,10 +98,15 @@ class OrderController extends Controller
                 ],
             ],
         ];
-        $order = $this->client->post('orders', $data);
+        //create order in woocommerce
+
+        $order = $client->post('orders', $data);
+
+        //transaction to create order in our db
         DB::beginTransaction();
         try {
             $created_order = Order::create([
+                'user_id' => $user_id,
                 'payment_method' => $order->payment_method,
                 'payment_method_title' => $order->payment_method_title,
                 'set_paid' => true,
@@ -144,9 +138,8 @@ class OrderController extends Controller
                 'order_currency' => $order->currency,
             ]);
 
-            foreach (CartController::getCartItems() as $product) {
-                CartItem::where('cart_id', $this->cart->id)->where('product_id', $product->product_id)->first()->delete();
-            }
+            //clear cart
+            CartController::clearCartItems();
 
             foreach ($order->line_items as $item) {
                 OrderItem::create([
@@ -161,25 +154,27 @@ class OrderController extends Controller
                 ]);
             }
             DB::commit();
+            //end transaction
         } catch (\Exception $e) {
-            session()->flash('error', __($e->getMessage()));
             DB::rollBack();
-            Log::debug($e->getMessage());
 
             return redirect()->back()->with('error', $e->getMessage());
         }
-        if (auth()->user()) {
+
+        //TODO: Email to user about order
+
+        if (auth()->check()) {
             return redirect()->route('order.myOrders')->with('success', 'Order created successfully');
         }
 
-        return redirect()->route('order.show', ['order_id' => $created_order->id])->with('success', 'Order created successfully');
+        return redirect()->route('order.thankyou', ['order_id' => $created_order->id])->with('success', 'Order created successfully');
     }
 
-    public function myOrders(Request $request)
+    public function myOrders(): View
     {
-        //$orders = auth()->user()->orders;
+        $orders = auth()->user()->orders;
 
-        return view('order.list');
+        return view('order.list', compact('orders'));
     }
 
     public function show(Order $order)
@@ -187,5 +182,10 @@ class OrderController extends Controller
         $order = Order::find($order->id)->with('order_items')->first();
 
         return view('order.show', compact('order'));
+    }
+
+    public function thankYou(Request $request): View
+    {
+        return view('order.thankyou');
     }
 }
