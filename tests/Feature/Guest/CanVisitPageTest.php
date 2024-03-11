@@ -4,7 +4,7 @@ namespace Tests\Feature\Guest;
 
 use Tests\TestCase;
 
-class CanVisitPage extends TestCase
+class CanVisitPageTest extends TestCase
 {
     public function testGuestUserCanVisitCart(): void
     {

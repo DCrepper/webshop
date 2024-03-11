@@ -24,13 +24,14 @@ class OrderCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'payment_method' => ['required', 'string', 'max:255', 'min:1'],
             'billing' => [
                 'first_name' => ['required', 'string', 'max:255', 'min:1'],
                 'last_name' => ['required', 'string', 'max:255', 'min:1'],
                 'email' => ['required', 'string', 'email', 'max:255', 'min:1'],
                 'phone' => ['required', 'string', 'max:255', 'min:1'],
                 'address_1' => ['required', 'string', 'max:255', 'min:1'],
-                'address_2' => ['required', 'string', 'max:255', 'min:1'],
+                'address_2' => ['nullable', 'string', 'max:255', 'min:1'],
                 'city' => ['required', 'string', 'max:255', 'min:1'],
                 'country' => ['required', 'string', 'max:255', 'min:1'],
                 'postcode' => ['required', 'string', 'max:255', 'min:1'],
@@ -39,13 +40,14 @@ class OrderCreateRequest extends FormRequest
                 'first_name' => ['required', 'string', 'max:255', 'min:1'],
                 'last_name' => ['required', 'string', 'max:255', 'min:1'],
                 'address_1' => ['required', 'string', 'max:255', 'min:1'],
-                'address_2' => ['required', 'string', 'max:255', 'min:1'],
+                'address_2' => ['nullable', 'string', 'max:255', 'min:1'],
                 'city' => ['required', 'string', 'max:255', 'min:1'],
                 'state' => ['required', 'string', 'max:255', 'min:1'],
                 'postcode' => ['required', 'string', 'min:1', 'max:9999'],
                 'country' => ['required', 'string', 'min:1', 'max:255'],
-                'lines_method' => ['required', new EnumValue(ShippingMethods::class)],
+
             ],
+            'shipping_lines' => ['required', new EnumValue(ShippingMethods::class)],
         ];
 
     }

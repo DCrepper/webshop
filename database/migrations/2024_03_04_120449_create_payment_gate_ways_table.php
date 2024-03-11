@@ -13,8 +13,12 @@ return new class extends Migration
     {
         Schema::create('payment_gate_ways', function (Blueprint $table) {
             $table->id();
+            $table->string('payment_gate_way_id');
             $table->string('title');
-
+            $table->text('description');
+            $table->boolean('enabled')->default(true);
+            $table->string('method_title');
+            $table->string('method_description');
             $table->timestamps();
         });
     }

@@ -26,6 +26,11 @@ class Cart extends Model
         return $this->hasMany(CartItem::class);
     }
 
+    public function cartItem()
+    {
+        return $this->hasMany(CartItem::class);
+    }
+
     /**
      * Get the user that owns the cart.
      *

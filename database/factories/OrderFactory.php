@@ -22,8 +22,8 @@ class OrderFactory extends Factory
 
         return [
             'user_id' => User::factory(),
-            'payment_method' => fake()->randomElement(['credit_card', 'paypal', 'bank_transfer']),
-            'payment_method_title' => $paymentGateWay->payment_method_title,
+            'payment_method' => $paymentGateWay->payment_gate_way_id,
+            'payment_method_title' => $paymentGateWay->title,
             'set_paid' => fake()->boolean,
             'billing_first_name' => fake()->firstName,
             'billing_last_name' => fake()->lastName,

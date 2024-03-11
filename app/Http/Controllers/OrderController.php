@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\OrderCreateRequest;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\PaymentGateWay;
 use Automattic\WooCommerce\Client;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
@@ -49,9 +51,10 @@ class OrderController extends Controller
                 'version' => 'wc/v3',
             ]
         );
-
-        $cart = CartController::createCart();
-        $user_id = auth()->user()->id;
+        $user_id = null;
+        if (Auth::check()) {
+            $user_id = auth()->user()->id;
+        }
 
         $cartItems = CartController::getCartItems()->map(function ($item) {
             return [
@@ -59,21 +62,18 @@ class OrderController extends Controller
                 'quantity' => $item->quantity,
             ];
         });
+        $payment_method = PaymentGateWay::where('payment_gate_way_id', $validated['payment_method'])->first();
         $data = [
-            'payment_method' => 'bacs',
-            'payment_method_title' => 'Direct Bank Transfer',
-            'set_paid' => true,
+            'payment_method' => $payment_method->payment_method_id,
+            'payment_method_title' => $payment_method->title,
+            'set_paid' => false,
             'billing' => [
                 'first_name' => $validated['billing']['first_name'],
                 'last_name' => $validated['billing']['last_name'],
                 'address_1' => $validated['billing']['address_1'],
-                'address_2' => $validated['billing']['address_2'],
+                'address_2' => $validated['billing']['address_2'] ?? '',
                 'city' => $validated['billing']['city'],
                 'state' => $validated['billing']['state'],
-                'postcode' => $validated['billing']['postcode'],
-                'country' => $validated['billing']['country'],
-                'email' => $validated['billing']['email'],
-                'phone' => $validated['billing']['phone'],
                 'postcode' => $validated['billing']['postcode'],
                 'country' => $validated['billing']['country'],
                 'email' => $validated['billing']['email'],
@@ -83,7 +83,7 @@ class OrderController extends Controller
                 'first_name' => $validated['shipping']['first_name'],
                 'last_name' => $validated['shipping']['last_name'],
                 'address_1' => $validated['shipping']['address_1'],
-                'address_2' => $validated['shipping']['address_2'],
+                'address_2' => $validated['shipping']['address_2'] ?? '',
                 'city' => $validated['shipping']['city'],
                 'state' => $validated['shipping']['state'],
                 'postcode' => $validated['shipping']['postcode'],
@@ -92,7 +92,7 @@ class OrderController extends Controller
             'line_items' => $cartItems->toArray(),
             'shipping_lines' => [
                 [
-                    'method_id' => $validated['shipping']['lines_method'],
+                    'method_id' => $validated['shipping_lines'],
                     'method_title' => 'Flat Rate',
                     'total' => '10.00',
                 ],
@@ -167,7 +167,7 @@ class OrderController extends Controller
             return redirect()->route('order.myOrders')->with('success', 'Order created successfully');
         }
 
-        return redirect()->route('order.thankyou', ['order_id' => $created_order->id])->with('success', 'Order created successfully');
+        return redirect()->route('order.thankyou')->with('success', 'Order created successfully');
     }
 
     public function myOrders(): View

@@ -17,7 +17,12 @@ class PaymentGateWayFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'payment_gate_way_id' => $this->faker->randomElement(['bacs', 'cheque', 'cod', 'paypal', 'stripe']),
+            'title' => $this->faker->sentence,
+            'description' => $this->faker->paragraph,
+            'enabled' => $this->faker->boolean,
+            'method_title' => $this->faker->sentence,
+            'method_description' => $this->faker->paragraph,
         ];
     }
 }

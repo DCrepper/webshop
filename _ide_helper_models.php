@@ -15,9 +15,12 @@ namespace App\Models{
 /**
  * App\Models\Cart
  *
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CartItem> $cartItem
+ * @property-read int|null $cart_item_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CartItem> $products
  * @property-read int|null $products_count
  * @property-read \App\Models\User|null $user
+ * @method static \Database\Factories\CartFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Cart newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Cart newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Cart query()
@@ -31,6 +34,7 @@ namespace App\Models{
  *
  * @property-read \App\Models\Cart|null $cart
  * @property-read \App\Models\Product|null $product
+ * @method static \Database\Factories\CartItemFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|CartItem newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CartItem newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CartItem query()
@@ -62,6 +66,18 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|OrderItem query()
  */
 	class OrderItem extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\PaymentGateWay
+ *
+ * @method static \Database\Factories\PaymentGateWayFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|PaymentGateWay newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PaymentGateWay newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PaymentGateWay query()
+ */
+	class PaymentGateWay extends \Eloquent {}
 }
 
 namespace App\Models{

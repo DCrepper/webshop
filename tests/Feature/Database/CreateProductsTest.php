@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\User;
+namespace Tests\Feature\Database;
 
 use App\Enums\WordpressEndpoints;
 use App\Models\Product;
