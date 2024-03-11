@@ -17422,16 +17422,6 @@ namespace A17\Twill\Facades {
                         /** @var \A17\Twill\TwillCapsules $instance */
                         return $instance->getAutoloader();
         }
-                    /**
-         * 
-         *
-         * @return \A17\Twill\class-string<Model> 
-         * @static 
-         */        public static function guessRelatedModelClass($related, $model)
-        {
-                        /** @var \A17\Twill\TwillCapsules $instance */
-                        return $instance->guessRelatedModelClass($related, $model);
-        }
             }
             /**
      * 
@@ -17901,24 +17891,6 @@ namespace A17\Twill\Facades {
         {
                         /** @var \A17\Twill\TwillNavigation $instance */
                         return $instance->getActiveSecondaryNavigationLink();
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */        public static function addTertiaryNavigationForCurrentRequest($link)
-        {
-                        /** @var \A17\Twill\TwillNavigation $instance */
-                        return $instance->addTertiaryNavigationForCurrentRequest($link);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */        public static function getTertiaryRequestLinks()
-        {
-                        /** @var \A17\Twill\TwillNavigation $instance */
-                        return $instance->getTertiaryRequestLinks();
         }
                     /**
          * 

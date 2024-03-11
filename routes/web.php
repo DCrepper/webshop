@@ -3,6 +3,7 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckOutController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PageDisplayController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,5 +42,5 @@ Route::prefix('checkout')->as('checkout.')->group(function () {
 });
 //Route::view('/', 'index')->name('index');
 
-Route::get('/', [\App\Http\Controllers\PageDisplayController::class, 'home'])->name('frontend.home');
-Route::get('{slug}', [\App\Http\Controllers\PageDisplayController::class, 'show'])->name('frontend.page');
+Route::get('/', [PageDisplayController::class, 'home'])->name('frontend.home');
+Route::get('{slug}', [PageDisplayController::class, 'show'])->name('frontend.page');
